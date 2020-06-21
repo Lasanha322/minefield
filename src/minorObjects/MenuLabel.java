@@ -1,12 +1,12 @@
 package minorObjects;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
-public class MenuButton extends JButton {
+public class MenuLabel extends JLabel {
 	private static final long serialVersionUID = 1L;
 
-	public MenuButton(String imgPath) {
+	public MenuLabel(String imgPath) {
 		super(new ImageIcon(imgPath));		
 	}
 }

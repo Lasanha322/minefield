@@ -5,4 +5,5 @@ public interface IGUI {
 	void imprimirSettings(ISettings Settings);
 	void imprimirGame(IGame Game);
 	void imprimirVencedor(IPlayer Winner);
+	String getLastAction();
 }
