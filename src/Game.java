@@ -14,8 +14,7 @@ public class Game implements IGame, ActionListener {
 	Game(ISettings Configuracao) {
 		this.Configuracao = Configuracao;
 		this.Tabuleiro = new Board();
-		this.Jogadores = new Player[Configuracao.getNumeroDeJogadores()];
-		
+		this.Jogadores = new Player[Configuracao.getNumeroDeJogadores()];		
 	}
 	
 	public void esperarJogada() {

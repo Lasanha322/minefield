@@ -1,11 +1,19 @@
 import interfaces.ISettings;
 
 public class Settings implements ISettings {
-	int NumeroDeJogadores;
-	int TamanhoDoTabuleiro;
-	int NumeroDeGemas;
-	boolean GanhaQuemTemMais;
-	boolean GanhaQuemPegouMais;
+	private int NumeroDeJogadores;
+	private int TamanhoDoTabuleiro;
+	private int NumeroDeGemas;
+	private boolean GanhaQuemTemMais;
+	private boolean GanhaQuemPegouMais;
+	
+	Settings() {
+		NumeroDeJogadores = 1;
+		TamanhoDoTabuleiro = 10;
+		NumeroDeGemas = 25;
+		GanhaQuemTemMais = true;
+		GanhaQuemPegouMais = false;
+	}
 	
 	public int getNumeroDeJogadores() {
 		return NumeroDeJogadores ;
@@ -46,7 +54,5 @@ public class Settings implements ISettings {
 
 	public void setGanhaQuemPegouMais(boolean thisCondition) {
 		GanhaQuemPegouMais=thisCondition;
-
 	}
-
 }

@@ -2,8 +2,9 @@ import interfaces.ICell;
 import interfaces.IConteudo;
 
 public class Cell implements ICell {
-IConteudo Conteudo;
-boolean Revelada;
+	private IConteudo Conteudo;
+	private boolean Revelada;
+	
 	@Override
 	public IConteudo getConteudo() {
 		// TODO Auto-generated method stub
@@ -27,5 +28,4 @@ boolean Revelada;
 		// TODO Auto-generated method stub
 		
 	}
-
 }

@@ -1,20 +1,38 @@
-import interfaces.IGUI;
-import interfaces.ISettings;
-
-public class minefield {	
+public class minefield {
+	
 	public static void main(String[] args) {
 		boolean runGame = true;
-		IGUI GUI = new GUI();
-		ISettings Configuracao = new Settings();
+		String LastAction;
+		Settings Configuracao = new Settings();
+		GUI Janela = new GUI();	
 		
-		GUI.imprimirMenuInicial();	
-		while(runGame) {
-			if (GUI.getLastAction() == "start") {
-				GUI.imprimirGame(new Game(Configuracao));
-			} else if (GUI.getLastAction() == "settings") {
-				GUI.imprimirSettings(Configuracao);
-			} else if (GUI.getLastAction() == "exit") {
+		Janela.imprimirMenuInicial();
+		while (runGame) {
+			synchronized (Janela) {
+				try {
+					Janela.wait(); 
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}			
+			}
+			
+			LastAction = Janela.getLastAction();
+			
+			switch(LastAction) {
+			case "start":
+				Janela.setVisible(false);
+				Janela.imprimirGame(new Game(Configuracao));
+				break;
+			case "settings":
+				Janela.setVisible(false);
+				Janela.imprimirSettings(Configuracao);
+				break;
+			case "exit":
+				Janela.setVisible(false);
 				runGame = false;
+				break;
+			default:
+				break;
 			}
 		}
 	}

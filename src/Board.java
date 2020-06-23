@@ -2,7 +2,8 @@ import interfaces.IBoard;
 import interfaces.ICell;
 
 public class Board implements IBoard {
-	ICell [] Celulas;
+	private ICell[] Celulas;
+	
 	public void revelarCelula(ICell Celula) {
 		// TODO Auto-generated method stub
 
@@ -37,5 +38,4 @@ public class Board implements IBoard {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -15,20 +15,21 @@ import minorObjects.MenuButton;
 import minorObjects.MenuLabel;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
-	private String LastAction = "open";
-	private static final long serialVersionUID = 1L;
+	private String LastAction;
+	private static final long serialVersionUID = 0;
 
 	@Override
 	public void imprimirMenuInicial() {
+		LastAction = "open";
 		String IMG_PATH = "img/menuInicial/";
 		MenuLabel labelLogo = new MenuLabel(IMG_PATH + "logo.png");
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
 		panelLogo.add(labelLogo);
 		
-		MenuButton buttonPlay = new MenuButton(IMG_PATH + "start.png");
-		buttonPlay.setActionCommand("start");
-		buttonPlay.addActionListener(this);
+		MenuButton buttonStart = new MenuButton(IMG_PATH + "start.png");
+		buttonStart.setActionCommand("start");
+		buttonStart.addActionListener(this);
 		MenuButton buttonSettings = new MenuButton(IMG_PATH + "settings.png");
 		buttonSettings.setActionCommand("settings");
 		buttonSettings.addActionListener(this);
@@ -38,7 +39,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		JPanel panelButtons = new JPanel();
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
 		panelButtons.setLayout(new GridLayout(3, 0));
-		panelButtons.add(buttonPlay);
+		panelButtons.add(buttonStart);
 		panelButtons.add(buttonSettings);
 		panelButtons.add(buttonExit);
 		
@@ -69,14 +70,17 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		System.out.println("Debug Message: imprimirVencedor");
 		
 	}
-	
+
+	@Override
 	public String getLastAction() {
-		return LastAction;		
+		return LastAction;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		LastAction = e.getActionCommand();
-		System.out.println("Debug Message: " + LastAction);
+		synchronized (this) {
+			LastAction = e.getActionCommand();
+			notify();
+		}
 	}
 }
