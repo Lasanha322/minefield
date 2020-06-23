@@ -2,30 +2,21 @@ import interfaces.ICell;
 import interfaces.IConteudo;
 
 public class Cell implements ICell {
-	private IConteudo Conteudo;
-	private boolean Revelada;
-	
-	@Override
+IConteudo Conteudo;
+boolean Revelada;
 	public IConteudo getConteudo() {
-		// TODO Auto-generated method stub
-		return null;
+		return Conteudo;
 	}
 
-	@Override
 	public boolean getRevelada() {
-		// TODO Auto-generated method stub
-		return false;
+		return Revelada;
 	}
-
-	@Override
 	public void setRevelada(boolean Revelada) {
-		// TODO Auto-generated method stub
+		this.Revelada=Revelada;
 
 	}
-
-	@Override
 	public void setConteudo(IConteudo conteudo) {
-		// TODO Auto-generated method stub
-		
+		this.Conteudo=conteudo;
 	}
+
 }
