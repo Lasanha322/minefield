@@ -1,8 +1,9 @@
 import interfaces.IPlayer;
 
 public class Player implements IPlayer {
-int GemasAtual;
-int GemasTotal;
+	int GemasAtual;
+	int GemasTotal;
+	
 	public int getGemasAtual() {
 		return GemasAtual;
 	}

@@ -77,17 +77,6 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		LastAction = e.getActionCommand();
-		switch(LastAction) {
-		case "start":
-			System.out.println("Debug Message: start");
-			break;
-		case "settings":
-			System.out.println("Debug Message: settings");
-			break;
-		case "exit":
-			System.out.println("Debug Message: exit");
-			setVisible(false);
-			break;
-		}
+		System.out.println("Debug Message: " + LastAction);
 	}
 }
