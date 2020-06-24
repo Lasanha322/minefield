@@ -11,7 +11,7 @@ public class Game implements IGame, ActionListener {
 	private IBoard Tabuleiro; 
 	private IPlayer[] Jogadores;
 	
-	Game(ISettings Configuracao) {
+	public Game(ISettings Configuracao) {
 		this.Configuracao = Configuracao;
 		this.Tabuleiro = new Board(Configuracao.getTamanhoDoTabuleiro());
 		this.Jogadores = new Player[Configuracao.getNumeroDeJogadores()];		
@@ -26,6 +26,11 @@ public class Game implements IGame, ActionListener {
 
 	
 	public void verificarFinal() {
+	}
+
+	@Override
+	public ISettings getSettings() {
+		return Configuracao;
 	}
 
 	@Override

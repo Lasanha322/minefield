@@ -17,14 +17,12 @@ public class minefield {
 			}
 			
 			LastAction = Janela.getLastAction();
-			
+				
 			switch(LastAction) {
 			case "start":
-				Janela.setVisible(false);
 				Janela.imprimirGame(new Game(Configuracao));
 				break;
 			case "settings":
-				Janela.setVisible(false);
 				Janela.imprimirSettings(Configuracao);
 				break;
 			case "exit":

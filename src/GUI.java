@@ -11,8 +11,8 @@ import interfaces.IGUI;
 import interfaces.IGame;
 import interfaces.IPlayer;
 import interfaces.ISettings;
-import minorObjects.MenuButton;
-import minorObjects.MenuLabel;
+import minorObjects.IconButton;
+import minorObjects.IconLabel;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
 	private String LastAction;
@@ -22,22 +22,24 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 	public void imprimirMenuInicial() {
 		LastAction = "open";
 		String IMG_PATH = "img/menuInicial/";
-		MenuLabel labelLogo = new MenuLabel(IMG_PATH + "logo.png");
+		IconLabel labelLogo = new IconLabel(IMG_PATH + "logo.png");
+		
 		JPanel panelLogo = new JPanel();
-		panelLogo.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
+		panelLogo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		panelLogo.add(labelLogo);
 		
-		MenuButton buttonStart = new MenuButton(IMG_PATH + "start.png");
+		IconButton buttonStart = new IconButton(IMG_PATH + "start.png");
 		buttonStart.setActionCommand("start");
 		buttonStart.addActionListener(this);
-		MenuButton buttonSettings = new MenuButton(IMG_PATH + "settings.png");
+		IconButton buttonSettings = new IconButton(IMG_PATH + "settings.png");
 		buttonSettings.setActionCommand("settings");
 		buttonSettings.addActionListener(this);
-		MenuButton buttonExit = new MenuButton(IMG_PATH + "exit.png");
+		IconButton buttonExit = new IconButton(IMG_PATH + "exit.png");
 		buttonExit.setActionCommand("exit");
 		buttonExit.addActionListener(this);
+		
 		JPanel panelButtons = new JPanel();
-		panelButtons.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
+		panelButtons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		panelButtons.setLayout(new GridLayout(3, 0));
 		panelButtons.add(buttonStart);
 		panelButtons.add(buttonSettings);
@@ -48,26 +50,56 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		this.add(panelButtons, BorderLayout.CENTER);
 		
 		setTitle("Minefield - Main Menu");
-		setSize(1000, 800);
+		setSize(1296, 735);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
 	@Override
 	public void imprimirSettings(ISettings settings) {
-		System.out.println("Debug Message: imprimirSettings");
-
+		String IMG_PATH = "img/settings/";
+		setTitle("Minefield - Settings");		
+		getContentPane().removeAll();
+		repaint();
 	}
 
 	@Override
 	public void imprimirGame(IGame game) {
-		System.out.println("Debug Message: imprimirGame");
-
+		String IMG_PATH = "img/game/";
+		int size = game.getSettings().getTamanhoDoTabuleiro();	
+		int players = game.getSettings().getNumeroDeJogadores();
+		setTitle("Minefield - Game");		
+		getContentPane().removeAll();
+		repaint();
+		
+		IconButton[] cellButton = new IconButton[size*size];
+		for(int i = 0; i < size*size; i++)
+			cellButton[i] = new IconButton(IMG_PATH + "cell.png");
+		JPanel panelCells = new JPanel();
+		panelCells.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		panelCells.setLayout(new GridLayout(size, size));
+		for(int i = 0; i < size*size; i++)
+			panelCells.add(cellButton[i]);
+		
+		IconLabel[] playerLabel = new IconLabel[players];
+		for(int i = 0; i < players; i++)
+			playerLabel[i] = new IconLabel(IMG_PATH + "player.png");		
+		JPanel panelPlayers = new JPanel();
+		panelPlayers.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		panelPlayers.setLayout(new GridLayout(0, players));
+		for(int i = 0; i < players; i++)
+			panelPlayers.add(playerLabel[i]);
+		
+		this.setLayout(new BorderLayout());
+		this.add(panelPlayers, BorderLayout.PAGE_START);
+		this.add(panelCells, BorderLayout.CENTER);
+		revalidate();
 	}
 
 	@Override
 	public void imprimirVencedor(IPlayer winner) {
 		System.out.println("Debug Message: imprimirVencedor");
+		String IMG_PATH = "img/winner/";
 		
 	}
 

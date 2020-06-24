@@ -1,4 +1,4 @@
 package interfaces;
 public interface IBoard {
-	public ICell [] getCell ();
+	public ICell getCell(int i);
 }
