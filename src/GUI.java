@@ -1,9 +1,10 @@
-import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,26 +12,27 @@ import interfaces.IGUI;
 import interfaces.IGame;
 import interfaces.IPlayer;
 import interfaces.ISettings;
+import minorObjects.Background;
 import minorObjects.IconButton;
 import minorObjects.IconLabel;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
 	private String LastAction;
 	private ISettings settings;
+	private Dimension resolution;
 	private static final long serialVersionUID = 0;
 	
 	public GUI() {
 		settings = new Settings();
+		resolution = new Dimension(settings.getWindowWidth(), settings.getWindowHeight());
+		setPreferredSize(resolution);
 	}
 
 	@Override
 	public void imprimirStart() {
 		String IMG_PATH = "img/menuInicial/";
-		IconLabel labelLogo = new IconLabel(IMG_PATH + "logo.png");
-		
-		JPanel panelLogo = new JPanel();
-		panelLogo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		panelLogo.add(labelLogo);
+		Background logo = new Background(IMG_PATH + "logo.png", resolution);
+		logo.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
 		
 		IconButton buttonStart = new IconButton(IMG_PATH + "start.png");
 		buttonStart.setActionCommand("game");
@@ -43,20 +45,25 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		buttonExit.addActionListener(this);
 		
 		JPanel panelButtons = new JPanel();
-		panelButtons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		panelButtons.setLayout(new GridLayout(3, 0));
+		panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
 		panelButtons.add(buttonStart);
 		panelButtons.add(buttonSettings);
 		panelButtons.add(buttonExit);
 		
-		this.setLayout(new BorderLayout());
-		this.add(panelLogo, BorderLayout.PAGE_START);
-		this.add(panelButtons, BorderLayout.CENTER);
+		logo.setLayout(new BoxLayout(logo, BoxLayout.Y_AXIS));
+		logo.add(Box.createVerticalGlue());
+		logo.add(panelButtons);
+		panelButtons.setAlignmentX(CENTER_ALIGNMENT);
+		logo.add(Box.createRigidArea(new Dimension(0, settings.getWindowHeight()/10)));
+		
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+		add(logo);
+		logo.setAlignmentX(CENTER_ALIGNMENT);
 		
 		setTitle("Minefield - Main Menu");
-		setSize(1296, 735);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+		pack();
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		for(int i = 0; i < size*size; i++)
 			cellButton[i] = new IconButton(IMG_PATH + "cell.png");
 		JPanel panelCells = new JPanel();
-		panelCells.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		panelCells.setBorder(BorderFactory.createEmptyBorder());
 		panelCells.setLayout(new GridLayout(size, size));
 		for(int i = 0; i < size*size; i++)
 			panelCells.add(cellButton[i]);
@@ -87,11 +94,11 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		for(int i = 0; i < players; i++)
 			panelPlayers.add(playerLabel[i]);
 	
-		
-		this.setLayout(new BorderLayout());
-		this.add(panelPlayers, BorderLayout.PAGE_START);
-		this.add(panelCells, BorderLayout.CENTER);
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+		add(panelPlayers);
+		add(panelCells);
 		revalidate();
+		pack();
 	}
 	
 	@Override
@@ -106,7 +113,6 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 	public void imprimirVencedor(IPlayer winner) {
 		System.out.println("Debug Message: imprimirVencedor");
 		String IMG_PATH = "img/winner/";
-		
 	}
 
 	@Override
