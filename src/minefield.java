@@ -1,18 +1,20 @@
 public class minefield {
 	
 	public static void main(String[] args) {
-		boolean runGame = true;
+		//Inicializamos o programa
 		String LastAction;
-		Settings Configuracao = new Settings();
-		GUI Janela = new GUI();	
+		GUI Janela = new GUI();
+		Janela.imprimirStart();
 		
-		Janela.imprimirMenuInicial();
+		//Rodamos esse loop enquanto o programa estiver aberto
+		boolean runGame = true;
 		while (runGame) {
 			synchronized (Janela) {
 				try {
 					Janela.wait(); 
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					e.getMessage();
+					runGame = false;
 				}			
 			}
 			
@@ -20,10 +22,13 @@ public class minefield {
 				
 			switch(LastAction) {
 			case "start":
-				Janela.imprimirGame(new Game(Configuracao));
+				Janela.imprimirStart();
+				break;
+			case "game":
+				Janela.imprimirGame();
 				break;
 			case "settings":
-				Janela.imprimirSettings(Configuracao);
+				Janela.imprimirSettings();
 				break;
 			case "exit":
 				Janela.setVisible(false);

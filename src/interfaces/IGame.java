@@ -1,8 +1,10 @@
 package interfaces;
 
 public interface IGame {
-	void esperarJogada();
-	void verificarJogada();
-	void verificarFinal();
-	ISettings getSettings();
+	public void esperarJogada();
+	public void verificarJogada();
+	public void verificarFinal();
+	public ISettings getSettings();
+	public IBoard getBoard();	
+	public IPlayer[] getPlayers();
 }

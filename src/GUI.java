@@ -16,11 +16,15 @@ import minorObjects.IconLabel;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
 	private String LastAction;
+	private ISettings settings;
 	private static final long serialVersionUID = 0;
+	
+	public GUI() {
+		settings = new Settings();
+	}
 
 	@Override
-	public void imprimirMenuInicial() {
-		LastAction = "open";
+	public void imprimirStart() {
 		String IMG_PATH = "img/menuInicial/";
 		IconLabel labelLogo = new IconLabel(IMG_PATH + "logo.png");
 		
@@ -29,7 +33,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		panelLogo.add(labelLogo);
 		
 		IconButton buttonStart = new IconButton(IMG_PATH + "start.png");
-		buttonStart.setActionCommand("start");
+		buttonStart.setActionCommand("game");
 		buttonStart.addActionListener(this);
 		IconButton buttonSettings = new IconButton(IMG_PATH + "settings.png");
 		buttonSettings.setActionCommand("settings");
@@ -56,15 +60,8 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 	}
 
 	@Override
-	public void imprimirSettings(ISettings settings) {
-		String IMG_PATH = "img/settings/";
-		setTitle("Minefield - Settings");		
-		getContentPane().removeAll();
-		repaint();
-	}
-
-	@Override
-	public void imprimirGame(IGame game) {
+	public void imprimirGame() {
+		IGame game = new Game(settings);
 		String IMG_PATH = "img/game/";
 		int size = game.getSettings().getTamanhoDoTabuleiro();	
 		int players = game.getSettings().getNumeroDeJogadores();
@@ -89,11 +86,20 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		panelPlayers.setLayout(new GridLayout(0, players));
 		for(int i = 0; i < players; i++)
 			panelPlayers.add(playerLabel[i]);
+	
 		
 		this.setLayout(new BorderLayout());
 		this.add(panelPlayers, BorderLayout.PAGE_START);
 		this.add(panelCells, BorderLayout.CENTER);
 		revalidate();
+	}
+	
+	@Override
+	public void imprimirSettings() {
+		String IMG_PATH = "img/settings/";
+		setTitle("Minefield - Settings");		
+		getContentPane().removeAll();
+		repaint();
 	}
 
 	@Override

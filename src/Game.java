@@ -32,6 +32,14 @@ public class Game implements IGame, ActionListener {
 	public ISettings getSettings() {
 		return Configuracao;
 	}
+	
+	public IBoard getBoard() {
+		return Tabuleiro;
+	}
+	
+	public IPlayer[] getPlayers() {
+		return Jogadores;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
