@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,14 +26,16 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 	public GUI() {
 		settings = new Settings();
 		resolution = new Dimension(settings.getWindowWidth(), settings.getWindowHeight());
-		setPreferredSize(resolution);
+		getContentPane().setPreferredSize(resolution);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 
 	@Override
 	public void imprimirStart() {
-		String IMG_PATH = "img/menuInicial/";
-		Background logo = new Background(IMG_PATH + "logo.png", resolution);
-		logo.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
+		String IMG_PATH = "img/start/";	
+		setTitle("Minefield - Main Menu");		
+		getContentPane().removeAll();
 		
 		IconButton buttonStart = new IconButton(IMG_PATH + "start.png");
 		buttonStart.setActionCommand("game");
@@ -49,7 +52,9 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		panelButtons.add(buttonStart);
 		panelButtons.add(buttonSettings);
 		panelButtons.add(buttonExit);
-		
+
+		Background logo = new Background(IMG_PATH + "background.png", resolution);
+		logo.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
 		logo.setLayout(new BoxLayout(logo, BoxLayout.Y_AXIS));
 		logo.add(Box.createVerticalGlue());
 		logo.add(panelButtons);
@@ -58,47 +63,75 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		add(logo);
-		logo.setAlignmentX(CENTER_ALIGNMENT);
-		
-		setTitle("Minefield - Main Menu");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
 		pack();
+		repaint();
 	}
 
 	@Override
 	public void imprimirGame() {
-		IGame game = new Game(settings);
 		String IMG_PATH = "img/game/";
-		int size = game.getSettings().getTamanhoDoTabuleiro();	
-		int players = game.getSettings().getNumeroDeJogadores();
 		setTitle("Minefield - Game");		
 		getContentPane().removeAll();
-		repaint();
+
+		IGame game = new Game(settings);
+		int size = game.getSettings().getTamanhoDoTabuleiro();	
+		int players = game.getSettings().getNumeroDeJogadores();
+		
+		IconLabel[] playerLabel = new IconLabel[players];
+		for(int i = 0; i < players; i++)
+			playerLabel[i] = new IconLabel(IMG_PATH + "player.png");
+		
+		JPanel panelPlayers = new JPanel();
+		panelPlayers.setBorder(BorderFactory.createEmptyBorder());
+		panelPlayers.setLayout(new BoxLayout(panelPlayers, BoxLayout.Y_AXIS));
+		for(int i = 0; i < players; i++)
+			panelPlayers.add(playerLabel[i]);	
 		
 		IconButton[] cellButton = new IconButton[size*size];
-		for(int i = 0; i < size*size; i++)
-			cellButton[i] = new IconButton(IMG_PATH + "cell.png");
+		for(int i = 0; i < size*size; i++) {
+			cellButton[i] = new IconButton(IMG_PATH + "cell_hidden.png");
+		}
+		
 		JPanel panelCells = new JPanel();
-		panelCells.setBorder(BorderFactory.createEmptyBorder());
 		panelCells.setLayout(new GridLayout(size, size));
 		for(int i = 0; i < size*size; i++)
 			panelCells.add(cellButton[i]);
 		
-		IconLabel[] playerLabel = new IconLabel[players];
-		for(int i = 0; i < players; i++)
-			playerLabel[i] = new IconLabel(IMG_PATH + "player.png");		
-		JPanel panelPlayers = new JPanel();
-		panelPlayers.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		panelPlayers.setLayout(new GridLayout(0, players));
-		for(int i = 0; i < players; i++)
-			panelPlayers.add(playerLabel[i]);
-	
-		setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-		add(panelPlayers);
-		add(panelCells);
-		revalidate();
+		JPanel panelBoard = new JPanel();
+		panelBoard.setBorder(BorderFactory.createEmptyBorder());
+		panelBoard.setLayout(new BoxLayout(panelBoard, BoxLayout.Y_AXIS));
+		panelBoard.setBackground(new Color(0, 0, 0, 0));
+		panelBoard.add(Box.createVerticalGlue());
+		panelBoard.add(panelCells);
+		panelBoard.add(Box.createVerticalGlue());
+
+		IconButton[] skillButton = new IconButton[5];
+		skillButton[0] = new IconButton(IMG_PATH + "skill0_unusable.png");
+		skillButton[1] = new IconButton(IMG_PATH + "skill1_unusable.png");
+		skillButton[2] = new IconButton(IMG_PATH + "skill2_unusable.png");
+		skillButton[3] = new IconButton(IMG_PATH + "skill3_unusable.png");
+		skillButton[4] = new IconButton(IMG_PATH + "skill4_unusable.png");
+		
+		JPanel panelSkills = new JPanel();
+		panelSkills.setBorder(BorderFactory.createEmptyBorder());
+		panelSkills.setLayout(new BoxLayout(panelSkills, BoxLayout.Y_AXIS));
+		for(int i = 0; i < 5; i++)
+			panelSkills.add(skillButton[i]);
+
+		Background background = new Background(IMG_PATH + "background.png", resolution);
+		background.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
+		background.setLayout(new BoxLayout(background, BoxLayout.X_AXIS));
+		background.add(Box.createHorizontalGlue());
+		background.add(panelPlayers);
+		background.add(Box.createHorizontalGlue());
+		background.add(panelBoard);
+		background.add(Box.createHorizontalGlue());
+		background.add(panelSkills);
+		background.add(Box.createHorizontalGlue());
+		
+		add(background);
 		pack();
+		repaint();
 	}
 	
 	@Override

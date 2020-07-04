@@ -13,8 +13,9 @@ public class minefield {
 				try {
 					Janela.wait(); 
 				} catch (InterruptedException e) {
-					e.getMessage();
 					runGame = false;
+					System.out.println(e.getMessage());
+					System.out.println("An unexpected error happened and the game will be closed.");
 				}			
 			}
 			

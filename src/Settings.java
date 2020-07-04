@@ -34,29 +34,30 @@ public class Settings implements ISettings {
 			windowHeight = Integer.parseInt(settingsData.get(6));
 			settingsFile.close();
 		} catch (IndexOutOfBoundsException | NumberFormatException | IOException e) {
-			e.getMessage();			
+			System.out.println(e.getMessage());			
 			try {
 				FileWriter newSettingsFile = new FileWriter("settings.txt");
-				newSettingsFile.append("1\n");
+				newSettingsFile.append("2\n");
 				newSettingsFile.append("10\n");
 				newSettingsFile.append("25\n");
 				newSettingsFile.append("true\n");
 				newSettingsFile.append("false\n");
-				newSettingsFile.append("640\n");
-				newSettingsFile.append("360\n");
+				newSettingsFile.append("1280\n");
+				newSettingsFile.append("720\n");
 				newSettingsFile.flush();
 				newSettingsFile.close();
+				System.out.println("A new settings.txt file with the default settings was created successfully.");
 			} catch (IOException e1) {
 				System.out.println("Could not create a settings.txt file!");
 			}
 			
-			NumeroDeJogadores = 1;
+			NumeroDeJogadores = 2;
 			TamanhoDoTabuleiro = 10;
 			NumeroDeGemas = 25;
 			GanhaQuemTemMais = true;
 			GanhaQuemPegouMais = false;
-			windowWidth = 640;
-			windowHeight = 360;
+			windowWidth = 1280;
+			windowHeight = 720;
 		}
 	}
 	
