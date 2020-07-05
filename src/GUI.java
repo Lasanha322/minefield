@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import interfaces.ISettings;
 import minorObjects.Background;
 import minorObjects.IconButton;
 import minorObjects.IconLabel;
+import minorObjects.PlayerLabel;
 import minorObjects.SkillButton;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
@@ -81,16 +83,17 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		int size = game.getSettings().getTamanhoDoTabuleiro();	
 		int players = game.getSettings().getNumeroDeJogadores();
 		
-		IconLabel[] playerLabel = new IconLabel[players];
-		for(int i = 0; i < players; i++)
-			playerLabel[i] = new IconLabel(IMG_PATH + "player");
+		PlayerLabel[] playerLabel = new PlayerLabel[players];
+		for(int i = 0; i < players; i++) {
+			playerLabel[i] = new PlayerLabel(game.getPlayers()[i], game);
+		}
 		
 		JPanel panelPlayers = new JPanel();
 		panelPlayers.setBorder(BorderFactory.createEmptyBorder());
 		panelPlayers.setLayout(new BoxLayout(panelPlayers, BoxLayout.Y_AXIS));
 		for(int i = 0; i < players; i++)
-			panelPlayers.add(playerLabel[i]);	
-
+			panelPlayers.add(playerLabel[i]);
+		
 		SkillButton[] skillButton = new SkillButton[5];
 		for(int i = 0; i < 5; i++) {
 			skillButton[i] = new SkillButton(i+1, IMG_PATH + "skill" + Integer.toString(i), game);
@@ -108,13 +111,16 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		for(int i = 0; i < size*size; i++) {
 			cellButton[i] = new IconButton(IMG_PATH + "cell");
 			cellButton[i].setActionCommand(Integer.toString(i));
-			cellButton[i].addActionListener(game);
-			cellButton[i].addActionListener(cellButton[i]);
+			cellButton[i].addActionListener(cellButton[i]);	
+			
+			for(int j = 0; j < players; j++)
+				cellButton[i].addActionListener(playerLabel[j]);
+			cellButton[i].addActionListener(game);	
 			cellButton[i].addActionListener(skillButton[0]);
 			cellButton[i].addActionListener(skillButton[1]);
 			cellButton[i].addActionListener(skillButton[2]);
 			cellButton[i].addActionListener(skillButton[3]);
-			cellButton[i].addActionListener(skillButton[4]);
+			cellButton[i].addActionListener(skillButton[4]);	
 		}
 		
 		JPanel panelCells = new JPanel();

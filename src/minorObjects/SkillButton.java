@@ -25,7 +25,6 @@ public class SkillButton extends IconButton {
 	public void actionPerformed(ActionEvent e) {
 		if (game.getPlayers()[game.proximoTurno()].getGemasAtual() >= skillCost) {
 				setEnabled(true);
-				System.out.println("Skill " + skillCost + " disponivel!");
 		} else {
 				setEnabled(false);
 		}	
