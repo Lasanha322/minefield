@@ -52,8 +52,12 @@ public void algoInteressante(…) {
 > <Apresente aqui as conclusões do projeto e propostas de trabalho futuro. Esta é a oportunidade em que você pode indicar melhorias no projeto a partir de lições aprendidas e conhecimentos adquiridos durante a realização do projeto, mas que não puderam ser implementadas por questões de tempo. Por exemplo, há design patterns aprendidos no final do curso que provavelmente não puderam ser implementados no jogo -- este é o espaço onde você pode apresentar como aplicaria o pattern no futuro para melhorar o jogo.>
 
 # Documentação dos Componentes
+# Diagramas
+## Diagrama Geral do Projeto
+> <Apresente um diagrama geral de organização da organização do seu sistema. O formato é livre. A escolha de um ou mais estilos arquiteturais será considerado um diferencial.>
+> <Faça uma breve descrição do diagrama.>
 
-# Diagrama Geral de Componentes
+## Diagrama Geral de Componentes
 ![Diagrama de Componentes do jogo Minefield](images/minefield_diagram.png)
 
 # Componente GUI
