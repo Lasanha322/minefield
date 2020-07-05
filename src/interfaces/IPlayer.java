@@ -1,9 +1,9 @@
 package interfaces;
 
 public interface IPlayer {
-	int getID();
-	int getGemasAtual();
-	int getGemasTotal();
-	void setGemasAtual(int GemasAtual);
-	void setGemasTotal(int GemasTotal);
+	public int getID();
+	public int getGemasAtual();
+	public int getGemasTotal();
+	public void setGemasAtual(int GemasAtual);
+	public void setGemasTotal(int GemasTotal);
 }

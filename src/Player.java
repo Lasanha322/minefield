@@ -11,22 +11,27 @@ public class Player implements IPlayer {
 		gemasTotal = 0;
 	}
 	
+	@Override
 	public int getID() {
 		return ID;
 	}
 	
+	@Override
 	public int getGemasAtual() {
 		return gemasAtual;
 	}
 
+	@Override
 	public int getGemasTotal() {
 		return gemasTotal;
 	}
 
+	@Override
 	public void setGemasAtual(int gemasAtual) {
 		this.gemasAtual = gemasAtual;
 	}
 
+	@Override
 	public void setGemasTotal(int gemasTotal) {
 		this.gemasTotal = gemasTotal;
 	}

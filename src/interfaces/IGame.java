@@ -3,10 +3,10 @@ import java.awt.event.ActionListener;
 
 public interface IGame extends ActionListener {
 	public boolean acabou();
+	public int getTurno();	
 	public int proximoTurno();
-	public int getTurno();
 	public ISettings getSettings();
-	public IBoard getBoard();	
+	public IBoard getBoard();
 	public IPlayer[] getPlayers();
-	public IPlayer getVencedor();
+	public IPlayer getWinner();
 }

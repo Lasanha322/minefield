@@ -1,7 +1,8 @@
 import interfaces.IConteudo;
 
 public class Gema implements IConteudo {
-	public boolean getVisibilidade() {
+	@Override
+	public boolean visivel() {
 		return true;
 	}
 }

@@ -25,7 +25,7 @@ public class SkillButton extends IconButton {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (game.getPlayers()[game.proximoTurno()].getGemasAtual() >= skillCost) {
+		if (game.getPlayers()[game.getTurno()].getGemasAtual() >= skillCost) {
 				setEnabled(true);
 		} else {
 				setEnabled(false);

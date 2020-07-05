@@ -1,18 +1,18 @@
 package interfaces;
 
 public interface ISettings {
-	int getNumeroDeJogadores();
-	int getTamanhoDoTabuleiro();
-	int getNumeroDeGemas();
-	boolean getGanhaQuemTemMais();
-	boolean getGanhaQuemPegouMais();
+	public boolean getGanhaQuemTemMais();
+	public boolean getGanhaQuemPegouMais();
+	public int getNumeroDeJogadores();
+	public int getTamanhoDoTabuleiro();
+	public int getNumeroDeGemas();
 	public int getWindowWidth();	
 	public int getWindowHeight();
-	void setNumeroDeJogadores(int n);
-	void setTamanhoDoTabuleiro(int n);
-	void setNumeroDeGemas(int n);
-	void setGanhaQuemTemMais(boolean thisCondition);
-	void setGanhaQuemPegouMais(boolean thisCondition);	
+	public void setGanhaQuemTemMais(boolean thisCondition);
+	public void setGanhaQuemPegouMais(boolean thisCondition);
+	public void setNumeroDeJogadores(int n);
+	public void setTamanhoDoTabuleiro(int n);
+	public void setNumeroDeGemas(int n);	
 	public void setWindowWidth(int newWidth);
 	public void setWindowHeight(int newHeight);
 }

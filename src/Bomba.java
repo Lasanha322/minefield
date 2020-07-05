@@ -1,8 +1,8 @@
 import interfaces.IConteudo;
 
 public class Bomba implements IConteudo {
-	public boolean getVisibilidade() {
+	@Override
+	public boolean visivel() {
 		return true;
 	}
-
 }

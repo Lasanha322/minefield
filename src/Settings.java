@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import interfaces.ISettings;
 
 public class Settings implements ISettings {
+	private boolean GanhaQuemTemMais;
+	private boolean GanhaQuemPegouMais;
 	private int NumeroDeJogadores;
 	private int TamanhoDoTabuleiro;
 	private int NumeroDeGemas;
-	private boolean GanhaQuemTemMais;
-	private boolean GanhaQuemPegouMais;
 	private int windowWidth;
 	private int windowHeight;
 	
-	Settings(){
+	public Settings() {
 		try {
 			BufferedReader settingsFile = new BufferedReader(new FileReader("settings.txt"));
 			
@@ -60,59 +60,73 @@ public class Settings implements ISettings {
 			windowHeight = 720;
 		}
 	}
-	
-	public int getNumeroDeJogadores() {
-		return NumeroDeJogadores ;
-	}
 
-	public int getTamanhoDoTabuleiro() {
-		return TamanhoDoTabuleiro;
-	}
-
-	public int getNumeroDeGemas() {
-		return NumeroDeGemas;
-	}
-
+	@Override
 	public boolean getGanhaQuemTemMais() {
 		return GanhaQuemTemMais;
 	}
 
+	@Override
 	public boolean getGanhaQuemPegouMais() {
 		return GanhaQuemPegouMais;
 	}
 	
+	@Override
+	public int getNumeroDeJogadores() {
+		return NumeroDeJogadores ;
+	}
+
+	@Override
+	public int getTamanhoDoTabuleiro() {
+		return TamanhoDoTabuleiro;
+	}
+
+	@Override
+	public int getNumeroDeGemas() {
+		return NumeroDeGemas;
+	}
+	
+	@Override
 	public int getWindowWidth() {
 		return windowWidth;
 	}
 	
+	@Override
 	public int getWindowHeight() {
 		return windowHeight;
 	}
 
-	public void setNumeroDeJogadores(int n) {
-		NumeroDeJogadores = n;
-	}
-
-	public void setTamanhoDoTabuleiro(int n) {
-		TamanhoDoTabuleiro = n;
-	}
-
-	public void setNumeroDeGemas(int n) {
-		NumeroDeGemas = n;
-	}
-
+	@Override
 	public void setGanhaQuemTemMais(boolean thisCondition) {
 		GanhaQuemTemMais = thisCondition;
 	}
 
+	@Override
 	public void setGanhaQuemPegouMais(boolean thisCondition) {
 		GanhaQuemPegouMais = thisCondition;
 	}
 	
+	@Override
+	public void setNumeroDeJogadores(int n) {
+		NumeroDeJogadores = n;
+	}
+
+	@Override
+	public void setTamanhoDoTabuleiro(int n) {
+		TamanhoDoTabuleiro = n;
+	}
+
+	@Override
+	public void setNumeroDeGemas(int n) {
+		NumeroDeGemas = n;
+	}
+	
+	@Override
 	public void setWindowWidth(int newWidth) {
 		windowWidth = newWidth;
 	}
 	
+	@Override
 	public void setWindowHeight(int newHeight) {
 		windowHeight = newHeight;
 	}

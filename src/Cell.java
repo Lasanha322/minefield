@@ -2,26 +2,30 @@ import interfaces.ICell;
 import interfaces.IConteudo;
 
 public class Cell implements ICell {
-	boolean revelada;
-	IConteudo Conteudo;
+	private boolean examinada;
+	private IConteudo Conteudo;
 
 	public Cell() {
-		this.revelada = false;		
-		this.Conteudo = new Vazio();
+		examinada = false;		
+		Conteudo = new Vazio();
 	}
 	
-	public void setRevelada(boolean revelada) {
-		this.revelada = revelada;
-
+	@Override
+	public void setExaminada(boolean examinada) {
+		this.examinada = examinada;
 	}
+	
+	@Override
 	public void setConteudo(IConteudo conteudo) {
 		this.Conteudo = conteudo;
 	}
 	
-	public boolean getRevelada() {
-		return revelada;
+	@Override
+	public boolean examinada() {
+		return examinada;
 	}
 	
+	@Override
 	public IConteudo getConteudo() {
 		return Conteudo;
 	}	

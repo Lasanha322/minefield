@@ -1,9 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -16,11 +14,10 @@ import interfaces.IPlayer;
 import interfaces.ISettings;
 import minorObjects.Background;
 import minorObjects.IconButton;
-import minorObjects.IconLabel;
 import minorObjects.PlayerLabel;
 import minorObjects.SkillButton;
 
-public class GUI extends JFrame implements IGUI, ActionListener {
+public class GUI extends JFrame implements IGUI {
 	private String LastAction;
 	private ISettings Settings;
 	private Dimension Resolution;
@@ -111,12 +108,12 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 			
 			for(int j = 0; j < players; j++)
 				cellButton[i].addActionListener(playerLabel[j]);
-			cellButton[i].addActionListener(game);	
 			cellButton[i].addActionListener(skillButton[0]);
 			cellButton[i].addActionListener(skillButton[1]);
 			cellButton[i].addActionListener(skillButton[2]);
 			cellButton[i].addActionListener(skillButton[3]);
-			cellButton[i].addActionListener(skillButton[4]);	
+			cellButton[i].addActionListener(skillButton[4]);
+			cellButton[i].addActionListener(game);		
 		}
 		
 		JPanel panelCells = new JPanel();
@@ -189,6 +186,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		return LastAction;
 	}
 	
+	@Override
 	public ISettings getSettings() {
 		return Settings;
 	}
