@@ -289,8 +289,10 @@ Padroniza os métodos para a manipulação das células.
 Método | Objetivo
 -------| --------
 setExaminada |
+setRevelada |
 setConteudo |
 examinada |
+revelada |
 getConteudo |
 
 ## Componente Conteudo
