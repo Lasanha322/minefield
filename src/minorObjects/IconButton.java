@@ -12,9 +12,9 @@ public class IconButton extends JButton implements ActionListener {
 
 	public IconButton(String imgPath) {	
 		super();
-		setIcon(new ImageIcon(imgPath + "_usable.png"));
-		setDisabledIcon(new ImageIcon(imgPath + "_revealed.png"));
 		setBorder(BorderFactory.createRaisedBevelBorder());
+		setIcon(new ImageIcon(imgPath + "_usable.png"));
+		setDisabledIcon(new ImageIcon(imgPath + "_unusable.png"));
 	}
 
 	@Override

@@ -23,6 +23,7 @@ public class Game implements IGame {
 		contador = 0;
 		turno = 0;
 		celulasReveladas = 0;
+		skillModifier = 0;
 		Configuracao = Graficos.getSettings();
 		Tabuleiro = new Board((int)Math.pow(Configuracao.getTamanhoDoTabuleiro(), 2), Configuracao.getNumeroDeGemas());
 		Jogadores = new Player[Configuracao.getNumeroDeJogadores()];
@@ -53,7 +54,7 @@ public class Game implements IGame {
 			return 0;
 		else
 			return turno+1;
-	}	
+	}
 	
 	@Override
 	public ISettings getSettings() {
@@ -80,14 +81,19 @@ public class Game implements IGame {
 		String action = e.getActionCommand();
 		
 		if (action.startsWith("skill")) {
-			skillModifier = action.toCharArray()[5] - '0';
-			System.out.println("Skill Modifier changed to " + skillModifier);
+			if (skillModifier == 0)
+				skillModifier = action.toCharArray()[5] - '0';
+			else
+				skillModifier = 0;
 			
 			if (skillModifier == 5) {
 				//A Skill 5 eh a unica que tem efeito logo quando voce a seleciona			
+				encontrarGema();			
+				encontrarGema();			
 				encontrarGema();
+				Jogadores[turno].setGemasAtual(Jogadores[turno].getGemasAtual() - 5);	
 				skillModifier = 0;
-				Jogadores[turno].setGemasAtual(Jogadores[turno].getGemasAtual() - 5);				
+				turno = proximoTurno();		
 			}
 		} else {
 			int number = Integer.parseInt(action);
@@ -105,16 +111,14 @@ public class Game implements IGame {
 				}
 				break;
 			case 2:
-				//Examina uma celula e ainda permite revelar o conteudo de qualquer celula
-				if (contador == 0) {
-					examinarCelula(Tabuleiro.getCell(number));
-					contador++;
-					Jogadores[turno].setGemasAtual(Jogadores[turno].getGemasAtual() - 2);
-				} else {
-					revelarCelula(Tabuleiro.getCell(number));
+				//Examina 3 celulas do campo
+				examinarCelula(Tabuleiro.getCell(number));
+				contador++;
+				if (contador >= 3 || acabou()) {
 					contador = 0;
+					Jogadores[turno].setGemasAtual(Jogadores[turno].getGemasAtual() - 2);
 					skillModifier = 0;
-					turno = proximoTurno();
+					turno = proximoTurno();					
 				}
 				break;
 			case 3:
@@ -144,8 +148,9 @@ public class Game implements IGame {
 	}
 
 	private void revelarCelula(ICell Cell) {
-		celulasReveladas++;		
+		celulasReveladas++;
 		Cell.setExaminada(true);
+		Cell.setRevelada(true);
 		
 		String conteudo = Cell.getConteudo().getClass().getName();		
 		switch (conteudo) {
@@ -154,6 +159,9 @@ public class Game implements IGame {
 			Jogadores[turno].setGemasTotal(Jogadores[turno].getGemasTotal() + 1);
 			break;
 		case "Bomba":
+			Jogadores[turno].setGemasAtual(0);
+			break;
+		case "BombaInvisivel":
 			Jogadores[turno].setGemasAtual(0);
 			break;
 		default:
@@ -166,15 +174,12 @@ public class Game implements IGame {
 		} else if (Configuracao.getGanhaQuemTemMais()) {
 			if (Jogadores[turno].getGemasAtual() > Vencedor.getGemasAtual())
 				Vencedor = Jogadores[turno];
-		}
-
-		System.out.println(conteudo);
+		}	
 	}
 	
 	private void examinarCelula(ICell Cell) {
 		if (Cell.getConteudo().visivel()) {
-			Cell.setExaminada(true);
-			System.out.println("Tem um " + Cell.getConteudo().getClass().getName() + " escondido!");			
+			Cell.setExaminada(true);			
 		}
 	}	
 
@@ -183,19 +188,19 @@ public class Game implements IGame {
 			Cell.setConteudo(new Bomba());
 		else
 			Cell.setConteudo(new BombaInvisivel());
-		System.out.println("Bomba colocada!");
 	}
 	
 	private void encontrarGema() {
 		boolean achou = false;
 		int tamanhoDoTabuleiro = (int)Math.pow(Configuracao.getTamanhoDoTabuleiro(), 2);
 		String conteudo;
-		for (int i = 0; achou == false || i >= tamanhoDoTabuleiro ; i++) {
-			conteudo = Tabuleiro.getCell(i).getConteudo().getClass().getName();
-			if (conteudo == "Gema") {
-				achou = true;
-				Tabuleiro.getCell(i).setExaminada(true);
-				System.out.println("Gema encontrada!");
+		for (int i = 0; achou == false && i < tamanhoDoTabuleiro; i++) {
+			if (Tabuleiro.getCell(i).revelada() == false) {
+				conteudo = Tabuleiro.getCell(i).getConteudo().getClass().getName();
+				if (conteudo == "Gema") {
+					achou = true;
+					revelarCelula(Tabuleiro.getCell(i));
+				}				
 			}
 		}
 	}

@@ -13,6 +13,7 @@ import interfaces.IGame;
 import interfaces.IPlayer;
 import interfaces.ISettings;
 import minorObjects.Background;
+import minorObjects.GameButton;
 import minorObjects.IconButton;
 import minorObjects.PlayerLabel;
 import minorObjects.SkillButton;
@@ -70,19 +71,19 @@ public class GUI extends JFrame implements IGUI {
 	}
 
 	@Override
-	public void imprimirGame(IGame game) {
+	public void imprimirGame(IGame Game) {
 		String IMG_PATH = "img/game/";
 		setTitle("Minefield - Game");		
 		getContentPane().removeAll();
 		add(Box.createHorizontalGlue());
 		
 		//Imprime o estado inicial do jogo
-		int size = game.getSettings().getTamanhoDoTabuleiro();	
-		int players = game.getSettings().getNumeroDeJogadores();
+		int size = Game.getSettings().getTamanhoDoTabuleiro();	
+		int players = Game.getSettings().getNumeroDeJogadores();
 		
 		PlayerLabel[] playerLabel = new PlayerLabel[players];
 		for (int i = 0; i < players; i++)
-			playerLabel[i] = new PlayerLabel(game.getPlayers()[i], game);
+			playerLabel[i] = new PlayerLabel(Game.getPlayers()[i], Game);
 		
 		JPanel panelPlayers = new JPanel();
 		panelPlayers.setBorder(BorderFactory.createEmptyBorder());
@@ -92,34 +93,47 @@ public class GUI extends JFrame implements IGUI {
 		
 		SkillButton[] skillButton = new SkillButton[5];
 		for (int i = 0; i < 5; i++)
-			skillButton[i] = new SkillButton(i+1, IMG_PATH + "skill" + Integer.toString(i), game);
-		
+			skillButton[i] = new SkillButton(i+1, IMG_PATH, Game);
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++)
+				skillButton[i].addActionListener(skillButton[j]);
+			for (int j = 0; j < players; j++)
+				skillButton[i].addActionListener(playerLabel[j]);
+		}
 		JPanel panelSkills = new JPanel();
 		panelSkills.setBorder(BorderFactory.createEmptyBorder());
 		panelSkills.setLayout(new BoxLayout(panelSkills, BoxLayout.Y_AXIS));
 		for (int i = 0; i < 5; i++)
 			panelSkills.add(skillButton[i]);
 
-		IconButton[] cellButton = new IconButton[size*size];
+		GameButton[] gameButton = new GameButton[size*size];
 		for (int i = 0; i < size*size; i++) {
-			cellButton[i] = new IconButton(IMG_PATH + "cell");
-			cellButton[i].setActionCommand(Integer.toString(i));
-			cellButton[i].addActionListener(cellButton[i]);	
-			
+			gameButton[i] = new GameButton(IMG_PATH, Game.getBoard().getCell(i));
+			gameButton[i].setActionCommand(Integer.toString(i));
+			gameButton[i].addActionListener(gameButton[i]);
+			gameButton[i].addActionListener(skillButton[0]);
+			gameButton[i].addActionListener(skillButton[1]);
+			gameButton[i].addActionListener(skillButton[2]);
+			gameButton[i].addActionListener(skillButton[3]);
+			gameButton[i].addActionListener(skillButton[4]);
+
 			for(int j = 0; j < players; j++)
-				cellButton[i].addActionListener(playerLabel[j]);
-			cellButton[i].addActionListener(skillButton[0]);
-			cellButton[i].addActionListener(skillButton[1]);
-			cellButton[i].addActionListener(skillButton[2]);
-			cellButton[i].addActionListener(skillButton[3]);
-			cellButton[i].addActionListener(skillButton[4]);
-			cellButton[i].addActionListener(game);		
+				gameButton[i].addActionListener(playerLabel[j]);
+			
+			gameButton[i].addActionListener(Game);				
+		}
+		
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < size*size; j++) {
+				skillButton[i].addActionListener(gameButton[j]);
+			}
+			skillButton[i].addActionListener(Game);
 		}
 		
 		JPanel panelCells = new JPanel();
 		panelCells.setLayout(new GridLayout(size, size));
 		for (int i = 0; i < size*size; i++)
-			panelCells.add(cellButton[i]);
+			panelCells.add(gameButton[i]);
 		
 		JPanel panelBoard = new JPanel();
 		panelBoard.setBorder(BorderFactory.createEmptyBorder());
@@ -170,11 +184,11 @@ public class GUI extends JFrame implements IGUI {
 		getContentPane().removeAll();
 		add(Box.createHorizontalGlue());
 		
-		Background background = new Background(IMG_PATH + "background", Resolution);
-		background.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
-		background.setLayout(new BoxLayout(background, BoxLayout.X_AXIS));
+		Background Background = new Background(IMG_PATH + "background", Resolution);
+		Background.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
+		Background.setLayout(new BoxLayout(Background, BoxLayout.X_AXIS));
 		
-		add(background);
+		add(Background);
 		add(Box.createHorizontalGlue());
 		pack();
 		repaint();

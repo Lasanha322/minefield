@@ -38,8 +38,8 @@ public class Settings implements ISettings {
 			try {
 				FileWriter newSettingsFile = new FileWriter("settings.txt");
 				newSettingsFile.append("2\n");
-				newSettingsFile.append("10\n");
-				newSettingsFile.append("25\n");
+				newSettingsFile.append("6\n");
+				newSettingsFile.append("18\n");
 				newSettingsFile.append("true\n");
 				newSettingsFile.append("false\n");
 				newSettingsFile.append("1280\n");
@@ -52,8 +52,8 @@ public class Settings implements ISettings {
 			}
 			
 			NumeroDeJogadores = 2;
-			TamanhoDoTabuleiro = 10;
-			NumeroDeGemas = 25;
+			TamanhoDoTabuleiro = 6;
+			NumeroDeGemas = 18;
 			GanhaQuemTemMais = true;
 			GanhaQuemPegouMais = false;
 			windowWidth = 1280;
