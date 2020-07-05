@@ -1,7 +1,7 @@
 # Projeto Minefield
 
 # Descrição Resumida do Projeto
-Minefield é um jogo competitivo para 1 ou mais jogadores. Dispute com seus amigos para ver quem encontra mais gemas dentro de uma mina representada por um espaço celular. Gaste suas gemas para usar recursos poderosos, como um detector de gemas ou plantando uma bomba que faz quem encontrá-la perder todas as gemas! Nesse jogo altamente customizável, leve e simples, ganha quem souber aproveitar melhor as gemas que encontrar!
+Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amigos para ver quem encontra mais gemas dentro de uma mina representada por um espaço celular. Gaste suas gemas para usar recursos poderosos, como um detector de gemas ou plantando uma bomba que faz quem encontrá-la perder todas as gemas! Nesse jogo altamente customizável, leve e simples, ganha quem souber aproveitar melhor as gemas que encontrar!
 
 # Equipe
 * Bruna Rodrigues Barbosa - RA 194966
@@ -16,6 +16,7 @@ Minefield é um jogo competitivo para 1 ou mais jogadores. Dispute com seus amig
 # Slides do Projeto
 ## Slides da Prévia
 [Link para os slides](https://docs.google.com/presentation/d/1yb26aykyLqy626uItrTmpXIRKxinTik2M1ZeQIV17pM/edit?usp=sharing)
+
 ## Slides da Apresentação Final
 
 ## Relatório de Evolução
@@ -64,14 +65,14 @@ public void algoInteressante(…) {
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | IGUI
 
 ## Interfaces
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](diagrama-interfaces.png)
+![Diagrama Interfaces](interfacesGUI.png)
 
 Interface agregadora do componente em Java:
 
@@ -94,10 +95,12 @@ Define métodos para a impressão da interface gráfica do jogo.
 
 Método | Objetivo
 -------| --------
-imprimeMainMenu | Imprime o menu inicial do programa, dando caminho pras configurações ou pra iniciar o jogo. Não tem retorno.
+imprimirStart |
+imprimirGame | Imprime o menu inicial do programa, dando caminho pras configurações ou pra iniciar o jogo. Não tem retorno.
 imprimeSettings | Imprime o menu para configuração do jogo. Recebe um parâmetro Settings e imprime seus atributos. Não tem retorno.
-imprimeGame | Imprime o estado atual do jogo, dando as opções que o jogador desse turno pode fazer. Recebe um parâmetro Game com todos os dados do jogo. Não tem retorno.
-imprimeVencedor | Imprime uma tela mostrando o vencedor da partida. Recebe um parâmetro Player que representa o vencedor e imprime sua pontuação. Não tem retorno.
+imprimirWinner| Imprime uma tela mostrando o vencedor da partida. Recebe um parâmetro Player que representa o vencedor e imprime sua pontuação. Não tem retorno.
+getLastAction |
+getSettings |
 
 # Componente Settings
 > <Resumo do papel do componente e serviços que ele oferece.>
@@ -108,8 +111,8 @@ imprimeVencedor | Imprime uma tela mostrando o vencedor da partida. Recebe um pa
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | ISettings
 
 ## Interfaces
 
@@ -138,16 +141,20 @@ Interface implementada por qualquer objeto que armazene as regras do jogo.
 
 Método | Objetivo
 -------| --------
+getGanhaQuemTemMais |
+getGanhaQuemPegouMais |
 getNumeroDeJogadores | 
 getTamanhoDoTabuleiro |
 getNumeroDeGemas |
-getGanhaQuemTemMais |
-getGanhaQuemPegouMais |
+getWindowWidth |
+getWindowHeight |
 setNumeroDeJogadores |
 setTamanhoDoTabuleiro |
 setNumeroDeGemas |
 setGanhaQuemTemMais |
 setGanhaQuemPegouMais |
+setWindowWidth |
+setWindowHeight |
 
 # Componente Game
 > <Resumo do papel do componente e serviços que ele oferece.>
@@ -158,8 +165,8 @@ setGanhaQuemPegouMais |
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | IGame
 
 ## Interfaces
 
@@ -377,3 +384,20 @@ Define o conteúdo de uma célula.
 Método | Objetivo
 -------| --------
 getVisibilidade |
+
+# Plano de Exceções
+
+## Diagrama da hierarquia de exceções
+`<Elabore um diagrama com a hierarquia de exceções como detalhado abaixo>`
+
+![Hierarquia Exceções](exception-hierarchy.png)
+
+## Descrição das classes de exceção
+
+`<Monte uma tabela descritiva seguindo o exemplo>:`
+
+Classe | Descrição
+----- | -----
+DivisaoInvalida | Engloba todas as exceções de divisões não aceitas.
+DivisaoInutil | Indica que a divisão por 1 é inútil.
+DivisaoNaoInteira | Indica uma divisão não inteira.
