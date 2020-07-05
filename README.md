@@ -60,7 +60,7 @@ public void algoInteressante(…) {
 ## Diagrama Geral de Componentes
 ![Diagrama de Componentes do jogo Minefield](images/minefield_diagram.png)
 
-# Componente GUI
+## Componente GUI
 > <Resumo do papel do componente e serviços que ele oferece.>
 
 ![Componente GUI](images/componentGUI.png)
@@ -72,7 +72,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IGUI
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -99,7 +99,7 @@ imprimirWinner| Imprime uma tela mostrando o vencedor da partida. Recebe um par�
 getLastAction |
 getSettings |
 
-# Componente Settings
+## Componente Settings
 > <Resumo do papel do componente e serviços que ele oferece.>
 
 ![Componente](images/componentSettings.png)
@@ -111,7 +111,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | ISettings
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -146,7 +146,7 @@ setGanhaQuemPegouMais |
 setWindowWidth |
 setWindowHeight |
 
-# Componente Game
+## Componente Game
 > <Resumo do papel do componente e serviços que ele oferece.>
 
 ![Componente](images/componentGame.png)
@@ -158,7 +158,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IGame
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -185,7 +185,7 @@ getBoard |
 getPlayers |
 getWinner |
 
-# Componente Player
+## Componente Player
 > <Resumo do papel do componente e serviços que ele oferece.>
 
 ![Componente](images/componentPlayer.png)
@@ -197,7 +197,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IPlayer
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -222,7 +222,7 @@ getGemasTotal | Retorna a quantidade atual de gemas de um dado jogador.
 setGemasAtual | Altera o total de gemas que um determinado jogador pegou ao longo do jogo. Não tem retorno.
 setGemasTotal | Altera a quantidade atual de gemas de um determinado jogador. Não tem retorno.
 
-# Componente Board
+## Componente Board
 
 > <Resumo do papel do componente e serviços que ele oferece.>
 
@@ -235,7 +235,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces |IBoard
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -256,7 +256,7 @@ Método | Objetivo
 -------| --------
 getCell |
 
-# Componente Cell
+## Componente Cell
 
 > <Resumo do papel do componente e serviços que ele oferece.>
 
@@ -269,7 +269,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | ICell
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
@@ -293,7 +293,7 @@ setConteudo |
 examinada |
 getConteudo |
 
-# Componente Conteudo
+## Componente Conteudo
 
 > <Resumo do papel do componente e serviços que ele oferece.>
 
@@ -306,7 +306,7 @@ Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08compone
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IConteudo
 
-## Interfaces
+### Interfaces
 
 Interfaces associadas a esse componente:
 
