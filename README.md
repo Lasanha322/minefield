@@ -81,13 +81,6 @@ public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
 
-Campo | Valor
------ | -----
-Classe | src.componentGUI
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Permitir a impressão da interface gráfica do jogo
-Interface | IGUI
-
 ## Detalhamento das Interfaces
 
 ### Interface IGUI
@@ -126,13 +119,6 @@ Interface agregadora do componente em Java:
 public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
-
-Campo | Valor
------ | -----
-Classe | src.componentSettings
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Armazenar as regras do jogo
-Interface | ISettings
 
 ## Detalhamento das Interfaces
 
@@ -180,13 +166,6 @@ public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
 
-Campo | Valor
------ | -----
-Classe | src.componentGame
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Fazer o controle dos elementos do jogo (tabuleiro e pontuação) com base nas configurações
-Interface | IGame
-
 ## Detalhamento das Interfaces
 
 ### Interface IGame
@@ -221,13 +200,6 @@ Interface agregadora do componente em Java:
 public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
-
-Campo | Valor
------ | -----
-Classe | src.componentPlayer
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Controlar a pontuação de cada jogador
-Interface | IScore
 
 ## Detalhamento das Interfaces
 
@@ -265,13 +237,6 @@ Interface agregadora do componente em Java:
 public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
-
-Campo | Valor
------ | -----
-Classe | src.componentBoard
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Controlar o estado das células do tabuleiro
-Interface | IBoard
 
 ## Detalhamento das Interfaces
 
@@ -312,13 +277,6 @@ public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
 
-Campo | Valor
------ | -----
-Classe | src.componentCell
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Fornecer os métodos que podem ser realizados sobre as células
-Interface | ICell
-
 ## Detalhamento das Interfaces
 
 ### Interface ICell
@@ -356,26 +314,6 @@ public interface IDataSet extends ITableProducer, IDataSetProperties {
 }
 ~~~
 
-Campo | Valor
------ | -----
-Classe | src.componentGema
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Objeto de pontuação do jogo
-Interface | IConteudo
-
-Campo | Valor
------ | -----
-Classe | src.componentBomba
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Objeto que faz o jogador perder todas as gemas, mas que pode ser visualizada
-Interface | IConteudo
-
-Campo | Valor
------ | -----
-Classe | src.componentBombaInvisivel
-Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
-Objetivo | Objeto invisível que faz o jogador perder todas as gemas
-Interface | IConteudo
 ## Detalhamento das Interfaces
 
 ### Interface IConteudo
