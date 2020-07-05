@@ -84,31 +84,27 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		int players = game.getSettings().getNumeroDeJogadores();
 		
 		PlayerLabel[] playerLabel = new PlayerLabel[players];
-		for(int i = 0; i < players; i++) {
+		for (int i = 0; i < players; i++)
 			playerLabel[i] = new PlayerLabel(game.getPlayers()[i], game);
-		}
 		
 		JPanel panelPlayers = new JPanel();
 		panelPlayers.setBorder(BorderFactory.createEmptyBorder());
 		panelPlayers.setLayout(new BoxLayout(panelPlayers, BoxLayout.Y_AXIS));
-		for(int i = 0; i < players; i++)
+		for (int i = 0; i < players; i++)
 			panelPlayers.add(playerLabel[i]);
 		
 		SkillButton[] skillButton = new SkillButton[5];
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++)
 			skillButton[i] = new SkillButton(i+1, IMG_PATH + "skill" + Integer.toString(i), game);
-			skillButton[i].addActionListener(game);
-			skillButton[i].setActionCommand("skill");
-		}
 		
 		JPanel panelSkills = new JPanel();
 		panelSkills.setBorder(BorderFactory.createEmptyBorder());
 		panelSkills.setLayout(new BoxLayout(panelSkills, BoxLayout.Y_AXIS));
-		for(int i = 0; i < 5; i++)
+		for (int i = 0; i < 5; i++)
 			panelSkills.add(skillButton[i]);
 
 		IconButton[] cellButton = new IconButton[size*size];
-		for(int i = 0; i < size*size; i++) {
+		for (int i = 0; i < size*size; i++) {
 			cellButton[i] = new IconButton(IMG_PATH + "cell");
 			cellButton[i].setActionCommand(Integer.toString(i));
 			cellButton[i].addActionListener(cellButton[i]);	
@@ -125,7 +121,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		
 		JPanel panelCells = new JPanel();
 		panelCells.setLayout(new GridLayout(size, size));
-		for(int i = 0; i < size*size; i++)
+		for (int i = 0; i < size*size; i++)
 			panelCells.add(cellButton[i]);
 		
 		JPanel panelBoard = new JPanel();
@@ -158,23 +154,34 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		String IMG_PATH = "img/settings/";
 		setTitle("Minefield - Settings");		
 		getContentPane().removeAll();
+		add(Box.createHorizontalGlue());
 		
+		Background background = new Background(IMG_PATH + "background", Resolution);
+		background.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
+		background.setLayout(new BoxLayout(background, BoxLayout.X_AXIS));
+		
+		add(background);
 		add(Box.createHorizontalGlue());
 		pack();
 		repaint();
 	}
 
 	@Override
-	public void imprimirVencedor(IPlayer winner) {
-		String IMG_PATH = "img/vencedor/";
-		setTitle("Minefield - Game");		
+	public void imprimirWinner(IPlayer Winner) {
+		String IMG_PATH = "img/winner/";
+		setTitle("Minefield - Game Over");		
 		getContentPane().removeAll();
 		add(Box.createHorizontalGlue());
-		System.out.println("Vencedor: Jogador " + winner.getID());
 		
+		Background background = new Background(IMG_PATH + "background", Resolution);
+		background.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
+		background.setLayout(new BoxLayout(background, BoxLayout.X_AXIS));
+		
+		add(background);
 		add(Box.createHorizontalGlue());
 		pack();
 		repaint();
+		System.out.println("Vencedor: Jogador " + Winner.getID());
 	}
 
 	@Override

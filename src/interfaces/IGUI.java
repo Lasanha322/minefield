@@ -4,7 +4,7 @@ public interface IGUI {
 	void imprimirStart();
 	void imprimirGame(IGame game);
 	void imprimirSettings();
-	void imprimirVencedor(IPlayer Winner);
+	void imprimirWinner(IPlayer Winner);
 	String getLastAction();
 	ISettings getSettings();
 }

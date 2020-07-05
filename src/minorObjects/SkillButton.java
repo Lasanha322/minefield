@@ -16,6 +16,8 @@ public class SkillButton extends IconButton {
 		this.skillCost = skillCost;
 		this.game = game;
 
+		addActionListener(game);
+		setActionCommand("skill" + Integer.toString(skillCost));
 		setIcon(new ImageIcon(imgPath + "_usable.png"));
 		setEnabled(false);
 		setDisabledIcon(new ImageIcon(imgPath + "_unusable.png"));

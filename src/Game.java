@@ -63,46 +63,68 @@ public class Game implements IGame {
 	public IPlayer[] getPlayers() {
 		return Jogadores;
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {			
-		int gemasAtual = Jogadores[turno].getGemasAtual();
-		int gemasTotal = Jogadores[turno].getGemasTotal();
-		String conteudo = Tabuleiro.getCell(Integer.parseInt(e.getActionCommand())).getConteudo().getClass().getName();
-		System.out.println(conteudo);
-		
-		switch (conteudo) {
-		case "Gema":
-			gemasAtual++;
-			gemasTotal++;
-			Jogadores[turno].setGemasAtual(gemasAtual);
-			Jogadores[turno].setGemasTotal(gemasTotal);
-			break;
-		case "Bomba":
-			Jogadores[turno].setGemasAtual(0);
-			break;
-		default:
-			break;
-		}
-		
-		if (Configuracao.getGanhaQuemPegouMais()) {
-			if (Jogadores[turno].getGemasTotal() > vencedor.getGemasTotal())
-				vencedor = Jogadores[turno];
-		} else if (Configuracao.getGanhaQuemTemMais()) {
-			if (Jogadores[turno].getGemasAtual() > vencedor.getGemasAtual())
-				vencedor = Jogadores[turno];
-		}
-		
-		celulasReveladas++;
-		if (acabou()) {
-			Graficos.imprimirVencedor(vencedor);
-		} else {
-			turno = proximoTurno();				
-		}	
-	}
-
+	
 	@Override
 	public IPlayer getVencedor() {
 		return vencedor;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		int gemasAtual = Jogadores[turno].getGemasAtual();
+		int gemasTotal = Jogadores[turno].getGemasTotal();
+		
+		if (e.getActionCommand().startsWith("skill")) {
+			int skillCost = e.getActionCommand().toCharArray()[5] - '0';
+			
+			switch(skillCost) {
+			case 1:
+				gemasAtual--;
+				Jogadores[turno].setGemasAtual(gemasAtual);
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			default:
+				break;
+			}
+		} else {
+			String conteudo = Tabuleiro.getCell(Integer.parseInt(e.getActionCommand())).getConteudo().getClass().getName();
+			System.out.println(conteudo);
+			
+			switch (conteudo) {
+			case "Gema":
+				gemasAtual++;
+				gemasTotal++;
+				Jogadores[turno].setGemasAtual(gemasAtual);
+				Jogadores[turno].setGemasTotal(gemasTotal);
+				break;
+			case "Bomba":
+				Jogadores[turno].setGemasAtual(0);
+				break;
+			default:
+				break;
+			}
+			
+			if (Configuracao.getGanhaQuemPegouMais()) {
+				if (Jogadores[turno].getGemasTotal() > vencedor.getGemasTotal())
+					vencedor = Jogadores[turno];
+			} else if (Configuracao.getGanhaQuemTemMais()) {
+				if (Jogadores[turno].getGemasAtual() > vencedor.getGemasAtual())
+					vencedor = Jogadores[turno];
+			}
+			
+			celulasReveladas++;	
+			if (acabou()) {
+				Graficos.imprimirWinner(vencedor);
+			} else {
+				turno = proximoTurno();				
+			}	
+		}
 	}
 }
