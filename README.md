@@ -173,27 +173,31 @@ Determina os métodos que permitem o controle do estado do jogo.
 
 Método | Objetivo
 -------| --------
-esperarJogada |
-verificarJogada |
-verificarFinal |
+acabou |
+getTurno |
+proximoTurno |
+getSettings |
+getBoard |
+getPlayers |
+getWinner |
 
 # Componente Player
 > <Resumo do papel do componente e serviços que ele oferece.>
 
-![Componente](images/componentGame.png)
+![Componente](images/componentPlayer.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | IPlayer
 
 ## Interfaces
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesGame.png)
+![Diagrama Interfaces](images/interfacesPlayer.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -203,11 +207,12 @@ public interface IDataSet extends ITableProducer, IDataSetProperties {
 
 ## Detalhamento das Interfaces
 
-### Interface IScore.
+### Interface IPlayer.
 Fornece os métodos para controlar a pontuação dos jogadores.
 
 Método | Objetivo
 -------| --------
+getID |
 getGemasAtual | Retorna o total de gemas que um dado jogador pegou ao longo do jogo.
 getGemasTotal | Retorna a quantidade atual de gemas de um dado jogador.
 setGemasAtual | Altera o total de gemas que um determinado jogador pegou ao longo do jogo. Não tem retorno.
@@ -217,20 +222,20 @@ setGemasTotal | Altera a quantidade atual de gemas de um determinado jogador. N�
 
 > <Resumo do papel do componente e serviços que ele oferece.>
 
-![Componente](images/componentGame.png)
+![Componente](images/componentBoard.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces |IBoard
 
 ## Interfaces
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesGame.png)
+![Diagrama Interfaces](images/interfacesBoard.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -245,12 +250,7 @@ Interface com os métodos referentes às jogadas possíveis no jogo.
 
 Método | Objetivo
 -------| --------
-revelarCelula | Revela o conteúdo de uma dada célula do tabuleiro. Retorna o conteúdo dessa célula.
-revelar4Celulas | Revela, sequencialmente, o conteúdo de 4 células diferentes do tabuleiro. Não tem retorno.
-visualizarCelula | Visualiza o conteúdo de uma dada célula, sem revelá-la. Retorna o conteúdo da célula.
-colocarBomba | Esconde uma bomba numa determinada célula. Não tem retorno.
-colocarBombaInvisivel | Esconde uma bomba numa determinada célula. Essa bomba não é detectável pelo método visualizarCelula. Não tem retorno.
-descobrirGema | Revela aleatoriamente uma célula que esconde uma gema. Retorna uma célula escolhida aleatoriamente que contém uma gema.
+getCell |
 
 # Componente Cell
 
@@ -262,14 +262,14 @@ descobrirGema | Revela aleatoriamente uma célula que esconde uma gema. Retorna 
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | ICell
 
 ## Interfaces
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesGame.png)
+![Diagrama Interfaces](images/interfacesCell.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -284,23 +284,23 @@ Padroniza os métodos para a manipulação das células.
 
 Método | Objetivo
 -------| --------
-getConteudo |
-getRevelada |
+setExaminada |
 setConteudo |
-setRevelada |
+examinada |
+getConteudo |
 
 # Componente Conteudo
 
 > <Resumo do papel do componente e serviços que ele oferece.>
 
-![Componente](images/componentGame.png)
+![Componente](images/componentConteudo.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
 Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
+Interfaces | IConteudo
 
 ## Interfaces
 
@@ -321,7 +321,7 @@ Define o conteúdo de uma célula.
 
 Método | Objetivo
 -------| --------
-getVisibilidade |
+visivel |
 
 # Plano de Exceções
 
