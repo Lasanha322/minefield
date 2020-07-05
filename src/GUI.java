@@ -16,17 +16,19 @@ import interfaces.ISettings;
 import minorObjects.Background;
 import minorObjects.IconButton;
 import minorObjects.IconLabel;
+import minorObjects.SkillButton;
 
 public class GUI extends JFrame implements IGUI, ActionListener {
 	private String LastAction;
-	private ISettings settings;
-	private Dimension resolution;
+	private ISettings Settings;
+	private Dimension Resolution;
 	private static final long serialVersionUID = 0;
 	
 	public GUI() {
-		settings = new Settings();
-		resolution = new Dimension(settings.getWindowWidth(), settings.getWindowHeight());
-		getContentPane().setPreferredSize(resolution);
+		Settings = new Settings();
+		Resolution = new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight());
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+		getContentPane().setPreferredSize(Resolution);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
@@ -36,14 +38,15 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		String IMG_PATH = "img/start/";	
 		setTitle("Minefield - Main Menu");		
 		getContentPane().removeAll();
+		add(Box.createHorizontalGlue());
 		
-		IconButton buttonStart = new IconButton(IMG_PATH + "start.png");
+		IconButton buttonStart = new IconButton(IMG_PATH + "start");
 		buttonStart.setActionCommand("game");
 		buttonStart.addActionListener(this);
-		IconButton buttonSettings = new IconButton(IMG_PATH + "settings.png");
+		IconButton buttonSettings = new IconButton(IMG_PATH + "settings");
 		buttonSettings.setActionCommand("settings");
 		buttonSettings.addActionListener(this);
-		IconButton buttonExit = new IconButton(IMG_PATH + "exit.png");
+		IconButton buttonExit = new IconButton(IMG_PATH + "exit");
 		buttonExit.setActionCommand("exit");
 		buttonExit.addActionListener(this);
 		
@@ -53,43 +56,65 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		panelButtons.add(buttonSettings);
 		panelButtons.add(buttonExit);
 
-		Background logo = new Background(IMG_PATH + "background.png", resolution);
-		logo.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
+		Background logo = new Background(IMG_PATH + "background", Resolution);
+		logo.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
 		logo.setLayout(new BoxLayout(logo, BoxLayout.Y_AXIS));
 		logo.add(Box.createVerticalGlue());
 		logo.add(panelButtons);
 		panelButtons.setAlignmentX(CENTER_ALIGNMENT);
-		logo.add(Box.createRigidArea(new Dimension(0, settings.getWindowHeight()/10)));
+		logo.add(Box.createRigidArea(new Dimension(0, Settings.getWindowHeight()/10)));
 		
-		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		add(logo);
+		add(Box.createHorizontalGlue());
 		pack();
 		repaint();
 	}
 
 	@Override
-	public void imprimirGame() {
+	public void imprimirGame(IGame game) {
 		String IMG_PATH = "img/game/";
 		setTitle("Minefield - Game");		
 		getContentPane().removeAll();
-
-		IGame game = new Game(settings);
+		add(Box.createHorizontalGlue());
+		
+		//Imprime o estado inicial do jogo
 		int size = game.getSettings().getTamanhoDoTabuleiro();	
 		int players = game.getSettings().getNumeroDeJogadores();
 		
 		IconLabel[] playerLabel = new IconLabel[players];
 		for(int i = 0; i < players; i++)
-			playerLabel[i] = new IconLabel(IMG_PATH + "player.png");
+			playerLabel[i] = new IconLabel(IMG_PATH + "player");
 		
 		JPanel panelPlayers = new JPanel();
 		panelPlayers.setBorder(BorderFactory.createEmptyBorder());
 		panelPlayers.setLayout(new BoxLayout(panelPlayers, BoxLayout.Y_AXIS));
 		for(int i = 0; i < players; i++)
 			panelPlayers.add(playerLabel[i]);	
+
+		SkillButton[] skillButton = new SkillButton[5];
+		for(int i = 0; i < 5; i++) {
+			skillButton[i] = new SkillButton(i+1, IMG_PATH + "skill" + Integer.toString(i), game);
+			skillButton[i].addActionListener(game);
+			skillButton[i].setActionCommand("skill");
+		}
 		
+		JPanel panelSkills = new JPanel();
+		panelSkills.setBorder(BorderFactory.createEmptyBorder());
+		panelSkills.setLayout(new BoxLayout(panelSkills, BoxLayout.Y_AXIS));
+		for(int i = 0; i < 5; i++)
+			panelSkills.add(skillButton[i]);
+
 		IconButton[] cellButton = new IconButton[size*size];
 		for(int i = 0; i < size*size; i++) {
-			cellButton[i] = new IconButton(IMG_PATH + "cell_hidden.png");
+			cellButton[i] = new IconButton(IMG_PATH + "cell");
+			cellButton[i].setActionCommand(Integer.toString(i));
+			cellButton[i].addActionListener(game);
+			cellButton[i].addActionListener(cellButton[i]);
+			cellButton[i].addActionListener(skillButton[0]);
+			cellButton[i].addActionListener(skillButton[1]);
+			cellButton[i].addActionListener(skillButton[2]);
+			cellButton[i].addActionListener(skillButton[3]);
+			cellButton[i].addActionListener(skillButton[4]);
 		}
 		
 		JPanel panelCells = new JPanel();
@@ -105,21 +130,8 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		panelBoard.add(panelCells);
 		panelBoard.add(Box.createVerticalGlue());
 
-		IconButton[] skillButton = new IconButton[5];
-		skillButton[0] = new IconButton(IMG_PATH + "skill0_unusable.png");
-		skillButton[1] = new IconButton(IMG_PATH + "skill1_unusable.png");
-		skillButton[2] = new IconButton(IMG_PATH + "skill2_unusable.png");
-		skillButton[3] = new IconButton(IMG_PATH + "skill3_unusable.png");
-		skillButton[4] = new IconButton(IMG_PATH + "skill4_unusable.png");
-		
-		JPanel panelSkills = new JPanel();
-		panelSkills.setBorder(BorderFactory.createEmptyBorder());
-		panelSkills.setLayout(new BoxLayout(panelSkills, BoxLayout.Y_AXIS));
-		for(int i = 0; i < 5; i++)
-			panelSkills.add(skillButton[i]);
-
-		Background background = new Background(IMG_PATH + "background.png", resolution);
-		background.setSize(new Dimension(settings.getWindowWidth(), settings.getWindowHeight()));
+		Background background = new Background(IMG_PATH + "background", Resolution);
+		background.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
 		background.setLayout(new BoxLayout(background, BoxLayout.X_AXIS));
 		background.add(Box.createHorizontalGlue());
 		background.add(panelPlayers);
@@ -130,6 +142,7 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		background.add(Box.createHorizontalGlue());
 		
 		add(background);
+		add(Box.createHorizontalGlue());
 		pack();
 		repaint();
 	}
@@ -139,18 +152,32 @@ public class GUI extends JFrame implements IGUI, ActionListener {
 		String IMG_PATH = "img/settings/";
 		setTitle("Minefield - Settings");		
 		getContentPane().removeAll();
+		
+		add(Box.createHorizontalGlue());
+		pack();
 		repaint();
 	}
 
 	@Override
 	public void imprimirVencedor(IPlayer winner) {
-		System.out.println("Debug Message: imprimirVencedor");
-		String IMG_PATH = "img/winner/";
+		String IMG_PATH = "img/vencedor/";
+		setTitle("Minefield - Game");		
+		getContentPane().removeAll();
+		add(Box.createHorizontalGlue());
+		System.out.println("Vencedor: Jogador " + winner.getID());
+		
+		add(Box.createHorizontalGlue());
+		pack();
+		repaint();
 	}
 
 	@Override
 	public String getLastAction() {
 		return LastAction;
+	}
+	
+	public ISettings getSettings() {
+		return Settings;
 	}
 
 	@Override

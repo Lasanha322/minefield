@@ -1,22 +1,33 @@
 import interfaces.IPlayer;
 
 public class Player implements IPlayer {
-	private int GemasAtual;
-	private int GemasTotal;
+	private int ID;
+	private int gemasAtual;
+	private int gemasTotal;
+	
+	public Player(int ID) {
+		this.ID = ID;
+		gemasAtual = 0;
+		gemasTotal = 0;
+	}
+	
+	public int getID() {
+		return ID;
+	}
 	
 	public int getGemasAtual() {
-		return GemasAtual;
+		return gemasAtual;
 	}
 
 	public int getGemasTotal() {
-		return GemasTotal;
+		return gemasTotal;
 	}
 
-	public void setGemasAtual(int GemasAtual) {
-		this.GemasAtual=GemasAtual;
+	public void setGemasAtual(int gemasAtual) {
+		this.gemasAtual = gemasAtual;
 	}
 
-	public void setGemasTotal(int GemasTotal) {
-		this.GemasTotal=GemasTotal;
+	public void setGemasTotal(int gemasTotal) {
+		this.gemasTotal = gemasTotal;
 	}
 }

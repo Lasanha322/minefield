@@ -26,7 +26,7 @@ public class minefield {
 				Janela.imprimirStart();
 				break;
 			case "game":
-				Janela.imprimirGame();
+				new Game(Janela);
 				break;
 			case "settings":
 				Janela.imprimirSettings();

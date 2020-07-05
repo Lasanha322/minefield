@@ -9,8 +9,7 @@ public class IconLabel extends JLabel {
 
 	public IconLabel(String imgPath) {
 		super();
-		ImageIcon imgIcon = new ImageIcon(imgPath);
-		setIcon(imgIcon);
+		setIcon(new ImageIcon(imgPath + ".png"));
 		setBorder(BorderFactory.createEmptyBorder());
 	}
 }
