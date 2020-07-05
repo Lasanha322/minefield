@@ -28,27 +28,12 @@ public class Game implements IGame {
 		
 		Graficos.imprimirGame(this);
 	}
-
-	public void esperarJogada() {/*
-		synchronized(Graficos) {
-			try {
-				Graficos.wait();
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
-				System.out.println("An unexpected error happened and the game will be closed.");
-			}			
-		}*/
-	}
-	
-	public void verificarJogada() {
-	}
-
-	
-	public void verificarFinal() {
-	}
 	
 	public int proximoTurno() {
-		return (turno+1)%Configuracao.getNumeroDeJogadores();
+		if (turno + 1 >= Configuracao.getNumeroDeJogadores())
+			return 0;
+		else
+			return turno+1;
 	}
 	
 	@Override
@@ -80,42 +65,40 @@ public class Game implements IGame {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		synchronized(this) {			
-			int gemasAtual = Jogadores[turno].getGemasAtual();
-			int gemasTotal = Jogadores[turno].getGemasTotal();
-			String conteudo = Tabuleiro.getCell(Integer.parseInt(e.getActionCommand())).getConteudo().getClass().getName();
-			System.out.println(conteudo);
-			
-			switch (conteudo) {
-			case "Gema":
-				gemasAtual++;
-				gemasTotal++;
-				Jogadores[turno].setGemasAtual(gemasAtual);
-				Jogadores[turno].setGemasTotal(gemasTotal);
-				break;
-			case "Bomba":
-				Jogadores[turno].setGemasAtual(0);
-				break;
-			default:
-				break;
-			}
-			
-			if (Configuracao.getGanhaQuemPegouMais()) {
-				if (Jogadores[turno].getGemasTotal() > vencedor.getGemasTotal())
-					vencedor = Jogadores[turno];
-			} else if (Configuracao.getGanhaQuemTemMais()) {
-				if (Jogadores[turno].getGemasAtual() > vencedor.getGemasAtual())
-					vencedor = Jogadores[turno];
-			}
-			
-			celulasReveladas++;
-			if (acabou()) {
-				Graficos.imprimirVencedor(vencedor);
-			} else {
-				turno = proximoTurno();				
-			}						
+	public void actionPerformed(ActionEvent e) {			
+		int gemasAtual = Jogadores[turno].getGemasAtual();
+		int gemasTotal = Jogadores[turno].getGemasTotal();
+		String conteudo = Tabuleiro.getCell(Integer.parseInt(e.getActionCommand())).getConteudo().getClass().getName();
+		System.out.println(conteudo);
+		
+		switch (conteudo) {
+		case "Gema":
+			gemasAtual++;
+			gemasTotal++;
+			Jogadores[turno].setGemasAtual(gemasAtual);
+			Jogadores[turno].setGemasTotal(gemasTotal);
+			break;
+		case "Bomba":
+			Jogadores[turno].setGemasAtual(0);
+			break;
+		default:
+			break;
 		}
+		
+		if (Configuracao.getGanhaQuemPegouMais()) {
+			if (Jogadores[turno].getGemasTotal() > vencedor.getGemasTotal())
+				vencedor = Jogadores[turno];
+		} else if (Configuracao.getGanhaQuemTemMais()) {
+			if (Jogadores[turno].getGemasAtual() > vencedor.getGemasAtual())
+				vencedor = Jogadores[turno];
+		}
+		
+		celulasReveladas++;
+		if (acabou()) {
+			Graficos.imprimirVencedor(vencedor);
+		} else {
+			turno = proximoTurno();				
+		}	
 	}
 
 	@Override
