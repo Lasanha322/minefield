@@ -24,7 +24,7 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 
 ## Relatório de Evolução
 
-
+---
 # Destaques de Código
 
 ~~~java
@@ -139,8 +139,7 @@ Um dos principais utilizados foi o Pattener Observer
 O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso jogo precisamos sempre estar atentos aos comandos ocorridos na janela, ou seja a informação recebida pelo gameButton através do campo do tabuleiro é interpretada pela interface IGame no qual envia para a classe Game. A grande vantagem em utilizar esse padrão é que o game não precisa ficar verificando a todo momento o estado dos botões do jogo, esse modo faz com que ele apenas precise esperar uma notificação do botão. 
 
 # Conclusões e Trabalhos Futuros
-> <Apresente aqui as conclusões do projeto e propostas de trabalho futuro. Esta é a oportunidade em que você pode indicar melhorias no projeto a partir de lições aprendidas e conhecimentos adquiridos durante a realização do projeto, mas que não puderam ser implementadas por questões de tempo. Por exemplo, há design patterns aprendidos no final do curso que provavelmente não puderam ser implementados no jogo -- este é o espaço onde você pode apresentar como aplicaria o pattern no futuro para melhorar o jogo.>
-
+----
 # Documentação dos Componentes
 # Diagramas
 ## Diagrama Geral do Projeto
