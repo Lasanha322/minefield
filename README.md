@@ -424,6 +424,5 @@ visivel | retorna se o conteudo é visivel ou não
 
 Classe | Descrição
 ----- | -----
-DivisaoInvalida | Engloba todas as exceções de divisões não aceitas.
-DivisaoInutil | Indica que a divisão por 1 é inútil.
-DivisaoNaoInteira | Indica uma divisão não inteira.
+Settings | Quando não há um arquivo txt existente
+minefield | Quando a interfaace grafica é interronpida de alguma maneira inesperada
