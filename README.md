@@ -26,11 +26,96 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 # Destaques de Código
 
 ~~~java
-// Recorte do seu código
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
-}
+"public Board(int tamanho, int gemasPraColocar) {
+        double gemChance = (double)(gemasPraColocar)/(double)(tamanho);
+        Celulas = new ICell[tamanho];
+
+        for(int i = 0; i < tamanho; i++) {
+            Celulas[i] = new Cell();
+
+            if (gemasPraColocar > 0) {
+                if (tamanho - i <= gemasPraColocar) {
+                    Celulas[i].setConteudo(new Gema());
+                    gemasPraColocar--;
+                } else if (Math.random() < gemChance) {
+                    Celulas[i].setConteudo(new Gema());
+                    gemasPraColocar--;
+                }
+            }
+        }
+    }"
+~~~
+~~~java
+"public void imprimirStart() {
+        String IMG_PATH = "assets/img/start/";
+        setTitle("Minefield - Main Menu");
+        getContentPane().removeAll();
+        add(Box.createHorizontalGlue());
+
+        IconButton buttonStart = new IconButton(IMG_PATH + "start");
+        buttonStart.setActionCommand("game");
+        buttonStart.addActionListener(this);
+        IconButton buttonSettings = new IconButton(IMG_PATH + "settings");
+        buttonSettings.setActionCommand("settings");
+        buttonSettings.addActionListener(this);
+        IconButton buttonExit = new IconButton(IMG_PATH + "exit");
+        buttonExit.setActionCommand("exit");
+        buttonExit.addActionListener(this);
+
+        JPanel panelButtons = new JPanel();
+        panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
+        panelButtons.add(buttonStart);
+        panelButtons.add(buttonSettings);
+        panelButtons.add(buttonExit);
+
+        Background logo = new Background(IMG_PATH + "background", Resolution);
+        logo.setSize(new Dimension(Settings.getWindowWidth(), Settings.getWindowHeight()));
+        logo.setLayout(new BoxLayout(logo, BoxLayout.Y_AXIS));
+        logo.add(Box.createVerticalGlue());
+        logo.add(panelButtons);
+        panelButtons.setAlignmentX(CENTER_ALIGNMENT);
+        logo.add(Box.createRigidArea(new Dimension(0, Settings.getWindowHeight()/10)));
+
+        add(logo);
+        add(Box.createHorizontalGlue());
+        pack();
+        repaint();
+    }"
+~~~
+
+~~~java
+"boolean runGame = true;
+        while (runGame) {
+            synchronized (Janela) {
+                try {
+                    Janela.wait(); 
+                } catch (InterruptedException e) {
+                    runGame = false;
+                    System.out.println(e.getMessage());
+                    System.out.println("An unexpected error happened and the game will be closed.");
+                }
+            }
+
+            LastAction = Janela.getLastAction();
+
+            switch(LastAction) {
+            case "start":
+                Janela.imprimirStart();
+                break;
+            case "game":
+                new Game(Janela);
+                break;
+            case "settings":
+                Janela.imprimirSettings();
+                break;
+            case "exit":
+                Janela.setVisible(false);
+                runGame = false;
+                break;
+            default:
+                break;
+            }
+        }"
 ~~~
 
 # Destaques de Pattern
