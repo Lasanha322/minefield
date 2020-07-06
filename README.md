@@ -126,13 +126,15 @@ Um dos principais utilizados foi o Pattener Observer
 
 ## Código do Pattern
 ~~~java
-// Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
-}
+"GameButton[] GameButton = new GameButton[size*size];
+        for (int i = 0; i < size * size; i++) {
+            GameButton[i] = new GameButton(IMG_PATH, Game.getBoard().getCell(i));
+            GameButton[i].setActionCommand(Integer.toString(i));
+            ...
+            GameButton[i].addActionListener(Game);
+        }"
 ~~~
-> <Explicação de como o pattern foi adotado e quais suas vantagens, referenciando o diagrama.>
+O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso jogo precisamos sempre estar atentos aos comandos ocorridos na janela, ou seja a informação recebida pelo gameButton através do campo do tabuleiro é interpretada pela interface IGame no qual envia para a classe Game. A grande vantagem em utilizar esse padrão é que o game não precisa ficar verificando a todo momento o estado dos botões do jogo, esse modo faz com que ele apenas precise esperar uma notificação do botão. 
 
 # Conclusões e Trabalhos Futuros
 > <Apresente aqui as conclusões do projeto e propostas de trabalho futuro. Esta é a oportunidade em que você pode indicar melhorias no projeto a partir de lições aprendidas e conhecimentos adquiridos durante a realização do projeto, mas que não puderam ser implementadas por questões de tempo. Por exemplo, há design patterns aprendidos no final do curso que provavelmente não puderam ser implementados no jogo -- este é o espaço onde você pode apresentar como aplicaria o pattern no futuro para melhorar o jogo.>
