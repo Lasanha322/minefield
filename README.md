@@ -139,7 +139,7 @@ Um dos principais utilizados foi o Pattener Observer
 O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso jogo precisamos sempre estar atentos aos comandos ocorridos na janela, ou seja a informação recebida pelo gameButton através do campo do tabuleiro é interpretada pela interface IGame no qual envia para a classe Game. A grande vantagem em utilizar esse padrão é que o game não precisa ficar verificando a todo momento o estado dos botões do jogo, esse modo faz com que ele apenas precise esperar uma notificação do botão. 
 
 # Conclusões e Trabalhos Futuros
-----
+
 # Documentação dos Componentes
 # Diagramas
 ## Diagrama Geral do Projeto
