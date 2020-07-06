@@ -119,10 +119,10 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 ~~~
 
 # Destaques de Pattern
-`<Destaque de patterns adotados pela equipe. Sugestão de estrutura:>`
+Um dos principais utilizados foi o Pattener Observer
 
 ## Diagrama do Pattern
-`<Diagrama do pattern dentro do contexto da aplicação.>`
+![Diagrama Pattern](assents/PatternDiagram.png)
 
 ## Código do Pattern
 ~~~java
