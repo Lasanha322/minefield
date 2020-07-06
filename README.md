@@ -416,7 +416,6 @@ visivel | retorna se o conteudo é visivel ou não
 # Plano de Exceções
 
 ## Diagrama da hierarquia de exceções
-`<Elabore um diagrama com a hierarquia de exceções como detalhado abaixo>`
 
 ![Hierarquia Exceções](exception-hierarchy.png)
 
