@@ -24,7 +24,6 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 
 ## Relatório de Evolução
 
----
 # Destaques de Código
 
 ~~~java
