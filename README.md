@@ -21,10 +21,10 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 [link para os slides](https://docs.google.com/presentation/d/1YpxciGEAO1BESnD6pt4gv8nIQ6txXdxXmmpQrLz0dGE/edit?usp=sharing)
 
 ## Relatório de Evolução
-> <Relatório de evolução, descrevendo as evoluções do design do projeto, dificuldades enfrentadas, mudanças de rumo, melhorias e lições aprendidas. Referências aos diagramas e recortes de mudanças são bem-vindos.>
+
 
 # Destaques de Código
-> <Escolha trechos relevantes e/ou de destaque do seu código. Apresente um recorte (você pode usar reticências para remover partes menos importantes). Veja como foi usado o highlight de Java para o código.>
+
 ~~~java
 // Recorte do seu código
 public void algoInteressante(…) {
