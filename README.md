@@ -12,7 +12,7 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 [![Apresentação do Projeto Minefield](https://cdn.discordapp.com/attachments/694594122585211044/714183631840477264/Untitled.png)](https://drive.google.com/open?id=1QwehsP0wL8AdP_F_CxnumB9chjbt7saR)
 
 ## Vídeo do Jogo
-[![Apresentação do Projeto Minefield](https://drive.google.com/file/d/1h8wbmQdm3dRtPWtcCNihNFoI0OQtboj3/view?usp=sharing)
+[![Apresentação do Projeto Minefield]()](https://drive.google.com/file/d/1h8wbmQdm3dRtPWtcCNihNFoI0OQtboj3/view?usp=sharing)
 
 # Slides do Projeto
 
