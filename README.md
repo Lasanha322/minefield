@@ -250,6 +250,7 @@ Interfaces | IGame
 Interfaces associadas a esse componente:
 
 ![Diagrama Interfaces](assets/img/Diagramas/interfacesGame.png)
+
 Interface agregadora do componente em Java:
 
 ~~~java
