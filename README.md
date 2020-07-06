@@ -10,10 +10,12 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 # Vídeo do Projeto
 ## Vídeo da Prévia
 [![Apresentação do Projeto Minefield](https://cdn.discordapp.com/attachments/694594122585211044/714183631840477264/Untitled.png)](https://drive.google.com/open?id=1QwehsP0wL8AdP_F_CxnumB9chjbt7saR)
+
 ## Vídeo do Jogo
-> <Coloque um link para o vídeo em que é demonstrada a versão final do jogo. Esse vídeo deve ter em torno de 5 minutos. Este vídeo não apresenta slides, nem substitui a apresentação final do projeto, que será feita por conferência. Ele mostra apenas o jogo em funcionamento.>
+[![Apresentação do Projeto Minefield](https://drive.google.com/file/d/1h8wbmQdm3dRtPWtcCNihNFoI0OQtboj3/view?usp=sharing)
 
 # Slides do Projeto
+
 ## Slides da Prévia
 [Link para os slides](https://docs.google.com/presentation/d/1yb26aykyLqy626uItrTmpXIRKxinTik2M1ZeQIV17pM/edit?usp=sharing)
 
