@@ -142,10 +142,10 @@ O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso 
 # Documentação dos Componentes
 # Diagramas
 ## Diagrama Geral do Projeto
-![Diagrama de Geral do Projeto](assets/img/Diagramas/Minefield-componets.png)
+![Diagrama de Geral do Projeto](assets/img/Diagramas/DiagramaGeral.png)
 
 ## Diagrama Geral de Componentes
-![Diagrama de Componentes do jogo Minefield](assets/img/Diagramas/DiagramaGeral.png)
+![Diagrama de Componentes do jogo Minefield](assets/img/Diagramas/Minefield-componets.png)
 
 ## Componente GUI
 Fornece metodo de interface grafica
