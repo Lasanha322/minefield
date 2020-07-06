@@ -58,7 +58,7 @@ public void algoInteressante(…) {
 > <Faça uma breve descrição do diagrama.>
 
 ## Diagrama Geral de Componentes
-![Diagrama de Componentes do jogo Minefield](images/minefield_diagram.png)
+![Diagrama de Componentes do jogo Minefield](images/Minefield-componets.png)
 
 ## Componente GUI
 > <Resumo do papel do componente e serviços que ele oferece.>
