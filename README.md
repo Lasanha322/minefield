@@ -142,21 +142,20 @@ O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso 
 # Documentação dos Componentes
 # Diagramas
 ## Diagrama Geral do Projeto
-> <Apresente um diagrama geral de organização da organização do seu sistema. O formato é livre. A escolha de um ou mais estilos arquiteturais será considerado um diferencial.>
-> <Faça uma breve descrição do diagrama.>
+![Diagrama de Geral do Projeto](images/Minefield-componets.png)
 
 ## Diagrama Geral de Componentes
-![Diagrama de Componentes do jogo Minefield](images/Minefield-componets.png)
+![Diagrama de Componentes do jogo Minefield](images/DiagramaGeral.png)
 
 ## Componente GUI
-> <Resumo do papel do componente e serviços que ele oferece.>
+Fornece metodo de interface grafica
 
 ![Componente GUI](images/componentGUI.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.GUI
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IGUI
 
@@ -169,7 +168,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface IGUI extends ActionListener{
 }
 ~~~
 
@@ -180,22 +179,22 @@ Define métodos para a impressão da interface gráfica do jogo.
 
 Método | Objetivo
 -------| --------
-imprimirStart |
-imprimirGame | Imprime o menu inicial do programa, dando caminho pras configurações ou pra iniciar o jogo. Não tem retorno.
+imprimirStart | Imprime o menu inicial do programa, dando caminho pras configurações ou pra iniciar o jogo. Não tem retorno. 
+imprimirGame | Imprime o jogo
 imprimeSettings | Imprime o menu para configuração do jogo. Recebe um parâmetro Settings e imprime seus atributos. Não tem retorno.
 imprimirWinner| Imprime uma tela mostrando o vencedor da partida. Recebe um parâmetro Player que representa o vencedor e imprime sua pontuação. Não tem retorno.
-getLastAction |
-getSettings |
+getLastAction | retorna a ultima ação que intrface grafica reconheceu que o jogador fez. usada pelo componente que criou a interface grafica
+getSettings | retorna um atributo que a interface tem salva
 
 ## Componente Settings
-> <Resumo do papel do componente e serviços que ele oferece.>
+Armazena as configurações do jogo
 
 ![Componente](images/componentSettings.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.Settings
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | ISettings
 
@@ -208,7 +207,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface ISettings{
 }
 ~~~
 
@@ -219,30 +218,30 @@ Interface implementada por qualquer objeto que armazene as regras do jogo.
 
 Método | Objetivo
 -------| --------
-getGanhaQuemTemMais |
-getGanhaQuemPegouMais |
-getNumeroDeJogadores | 
-getTamanhoDoTabuleiro |
-getNumeroDeGemas |
-getWindowWidth |
-getWindowHeight |
-setNumeroDeJogadores |
-setTamanhoDoTabuleiro |
-setNumeroDeGemas |
-setGanhaQuemTemMais |
-setGanhaQuemPegouMais |
-setWindowWidth |
-setWindowHeight |
+getGanhaQuemTemMais | informa qual a condição de vitoria do jogo
+getGanhaQuemPegouMais | informa qual a condição de vitoria do jogo
+getNumeroDeJogadores | informa a quantidade de jogadores
+getTamanhoDoTabuleiro |informa o tamanho do tabuleiro
+getNumeroDeGemas | informa quantidade de gemas no jogo
+getWindowWidth |informa a largura da janela
+getWindowHeight | informa a altura da janela
+setNumeroDeJogadores | altera o numero de jogadores
+setTamanhoDoTabuleiro | altera o tamanho do tabuleiro
+setNumeroDeGemas | altera o numero de gemas
+setGanhaQuemTemMais | altera a condição de vitoria
+setGanhaQuemPegouMais | altera a condição de vitoria
+setWindowWidth | altera o lagura da janela
+setWindowHeight | altera a altura da janela
 
 ## Componente Game
-> <Resumo do papel do componente e serviços que ele oferece.>
+Controla o estado do jogo
 
 ![Componente](images/componentGame.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.Settings
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IGame
 
@@ -254,7 +253,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface IGame extends ActionListener {
 }
 ~~~
 
@@ -265,23 +264,23 @@ Determina os métodos que permitem o controle do estado do jogo.
 
 Método | Objetivo
 -------| --------
-acabou |
-getTurno |
-proximoTurno |
-getSettings |
-getBoard |
-getPlayers |
-getWinner |
+acabou | verifica se o jogo está no fim
+getTurno | informa o jogador que joga
+proximoTurno | informa a proxima pessoa a jogar
+getSettings | retorna as configurações do jogo
+getBoard | retorna o tabuleiro
+getPlayers | retorna os jogadores
+getWinner | retorna o vencedor
 
 ## Componente Player
-> <Resumo do papel do componente e serviços que ele oferece.>
+Armazena informações sobre os jogadores, referente a pontuação e indentificão do jogador
 
 ![Componente](images/componentPlayer.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.Player
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IPlayer
 
@@ -293,7 +292,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface IPlayer{
 }
 ~~~
 
@@ -304,22 +303,21 @@ Fornece os métodos para controlar a pontuação dos jogadores.
 
 Método | Objetivo
 -------| --------
-getID |
+getID | retorna a indentificação do jogador
 getGemasAtual | Retorna o total de gemas que um dado jogador pegou ao longo do jogo.
 getGemasTotal | Retorna a quantidade atual de gemas de um dado jogador.
 setGemasAtual | Altera o total de gemas que um determinado jogador pegou ao longo do jogo. Não tem retorno.
 setGemasTotal | Altera a quantidade atual de gemas de um determinado jogador. Não tem retorno.
 
 ## Componente Board
-
-> <Resumo do papel do componente e serviços que ele oferece.>
+Armazena as celulas do Tabuleiro
 
 ![Componente](images/componentBoard.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.Board
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces |IBoard
 
@@ -331,7 +329,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface IBoard{
 }
 ~~~
 
@@ -342,18 +340,17 @@ Interface com os métodos referentes às jogadas possíveis no jogo.
 
 Método | Objetivo
 -------| --------
-getCell |
+getCell | retorna uma determinada celula
 
 ## Componente Cell
-
-> <Resumo do papel do componente e serviços que ele oferece.>
+Armazena o estado de cada celula do jogo
 
 ![Componente](images/componentGame.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe |src.bin.Cell
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | ICell
 
@@ -365,7 +362,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface ICell {
 }
 ~~~
 
@@ -376,23 +373,22 @@ Padroniza os métodos para a manipulação das células.
 
 Método | Objetivo
 -------| --------
-setExaminada |
-setRevelada |
-setConteudo |
-examinada |
-revelada |
-getConteudo |
+setExaminada | altera se a celula já foi examinada
+setRevelada | altera de a celula já foi revelada
+setConteudo | altera o conteudo da celula
+examinada | avisa de a celula já foi examinada
+revelada | avisa se a celula já foi revelada
+getConteudo | informa o conteudo da celula
 
 ## Componente Conteudo
-
-> <Resumo do papel do componente e serviços que ele oferece.>
+Armazena o conteudo da celula
 
 ![Componente](images/componentConteudo.png)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Classe | src.bin.Conteudo
 Autores | Bruna Rodrigues Barbosa <br> Cauan Newton Alves Souza
 Interfaces | IConteudo
 
@@ -404,7 +400,7 @@ Interfaces associadas a esse componente:
 Interface agregadora do componente em Java:
 
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface IConteudo {
 }
 ~~~
 
@@ -415,7 +411,7 @@ Define o conteúdo de uma célula.
 
 Método | Objetivo
 -------| --------
-visivel |
+visivel | retorna se o conteudo é visivel ou não
 
 # Plano de Exceções
 
@@ -425,8 +421,6 @@ visivel |
 ![Hierarquia Exceções](exception-hierarchy.png)
 
 ## Descrição das classes de exceção
-
-`<Monte uma tabela descritiva seguindo o exemplo>:`
 
 Classe | Descrição
 ----- | -----
