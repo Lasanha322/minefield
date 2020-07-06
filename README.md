@@ -122,7 +122,7 @@ Minefield é um jogo competitivo para 2 ou mais jogadores. Dispute com seus amig
 Um dos principais utilizados foi o Pattener Observer
 
 ## Diagrama do Pattern
-![Diagrama Pattern](assents/PatternDiagram.png)
+![Diagrama Pattern](assets/img/Diagramas/PatternDiagram.png)
 
 ## Código do Pattern
 ~~~java
@@ -142,15 +142,15 @@ O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso 
 # Documentação dos Componentes
 # Diagramas
 ## Diagrama Geral do Projeto
-![Diagrama de Geral do Projeto](images/Minefield-componets.png)
+![Diagrama de Geral do Projeto](assets/img/Diagramas/Minefield-componets.png)
 
 ## Diagrama Geral de Componentes
-![Diagrama de Componentes do jogo Minefield](images/DiagramaGeral.png)
+![Diagrama de Componentes do jogo Minefield](assets/img/Diagramas/DiagramaGeral.png)
 
 ## Componente GUI
 Fornece metodo de interface grafica
 
-![Componente GUI](images/componentGUI.png)
+![Componente GUI](assets/img/Diagramas/componentGui.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -163,7 +163,7 @@ Interfaces | IGUI
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](interfacesGUI.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesGui.png)
 
 Interface agregadora do componente em Java:
 
@@ -189,7 +189,7 @@ getSettings | retorna um atributo que a interface tem salva
 ## Componente Settings
 Armazena as configurações do jogo
 
-![Componente](images/componentSettings.png)
+![Componente](assets/img/Diagramas/componentSettings.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -202,7 +202,7 @@ Interfaces | ISettings
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesSettings.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesSettings.png)
 
 Interface agregadora do componente em Java:
 
@@ -236,7 +236,7 @@ setWindowHeight | altera a altura da janela
 ## Componente Game
 Controla o estado do jogo
 
-![Componente](images/componentGame.png)
+![Componente](assets/img/Diagramas/componentGame.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -249,7 +249,7 @@ Interfaces | IGame
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesGame.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesGame.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -275,7 +275,7 @@ getWinner | retorna o vencedor
 ## Componente Player
 Armazena informações sobre os jogadores, referente a pontuação e indentificão do jogador
 
-![Componente](images/componentPlayer.png)
+![Componente](assets/img/Diagramas/componentPlayer.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -288,7 +288,7 @@ Interfaces | IPlayer
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesPlayer.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacePlayer.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -312,7 +312,7 @@ setGemasTotal | Altera a quantidade atual de gemas de um determinado jogador. N�
 ## Componente Board
 Armazena as celulas do Tabuleiro
 
-![Componente](images/componentBoard.png)
+![Componente](assets/img/Diagramas/componentBoard.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -325,7 +325,7 @@ Interfaces |IBoard
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesBoard.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesBoard.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -345,7 +345,7 @@ getCell | retorna uma determinada celula
 ## Componente Cell
 Armazena o estado de cada celula do jogo
 
-![Componente](images/componentGame.png)
+![Componente](assets/img/Diagramas/componentGame.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -358,7 +358,7 @@ Interfaces | ICell
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesCell.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesCell.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -383,7 +383,7 @@ getConteudo | informa o conteudo da celula
 ## Componente Conteudo
 Armazena o conteudo da celula
 
-![Componente](images/componentConteudo.png)
+![Componente](assets/img/Diagramas/componentConteudo.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -396,7 +396,7 @@ Interfaces | IConteudo
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](images/interfacesGame.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfacesGame.png)
 Interface agregadora do componente em Java:
 
 ~~~java
@@ -417,7 +417,7 @@ visivel | retorna se o conteudo é visivel ou não
 
 ## Diagrama da hierarquia de exceções
 
-![Hierarquia Exceções](exception-hierarchy.png)
+![Hierarquia Exceções](assets/img/Diagramas/diagramadeexceções.png)
 
 ## Descrição das classes de exceção
 
