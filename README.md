@@ -202,7 +202,7 @@ Interfaces | ISettings
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](assets/img/Diagramas/interfacesSettings.png)
+![Diagrama Interfaces](assets/img/Diagramas/interfaceSettings.png)
 
 Interface agregadora do componente em Java:
 
