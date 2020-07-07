@@ -130,6 +130,8 @@ Um dos principais utilizados foi o Pattener Observer
 O pattern que melhor se encaixou para o nosso jogo foi o observer pois em nosso jogo precisamos sempre estar atentos aos comandos ocorridos na janela, ou seja a informação recebida pelo gameButton através do campo do tabuleiro é interpretada pela interface IGame no qual envia para a classe Game. A grande vantagem em utilizar esse padrão é que o game não precisa ficar verificando a todo momento o estado dos botões do jogo, esse modo faz com que ele apenas precise esperar uma notificação do botão. 
 
 # Conclusões e Trabalhos Futuros
+Neste projeto pudemos ver na pratica a aplicabilidade da programação orientada a objeto encaixando a noção de encapsulamento, interface e encapsulamento, no qual permitiu o desenvolvimento fluido e natural do jogo. A possibilidade de implementar um código com tal estrutura facilita no entendimento mais nítido tanto do desenvolvedor quanto de uma pessoa que não participou da construção. Além disso, podemos realizar atualizações e reparos com maior facilidade sem afetar muito outras partes do código.
+	Uma das atualizações que já começaram a ser implementadas é a possibilidade de criar uma janela onde o jogador possa definir a quantidade de jogadores, o tamanho do tabuleiro e definir uma lista de música que o usuário gostaria de ouvir durante o jogo. Mais adiante, pretendemos incluir um conjunto de habilidade antes de começar o jogo, no qual cada jogador possa escolher um determinado número de habilidades para manter exclusivamente acessível por ele durante o jogo. Por ser um jogo multiplayer consideramos a possibilidade de implementar como um jogo on-line.
 
 # Documentação dos Componentes
 # Diagramas
